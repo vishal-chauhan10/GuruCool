@@ -12,7 +12,7 @@ function Login({navigation}) {
       <TextInput placeholder="Password" />
 
       <Button
-        onPress={() => navigation.navigate(Home)}
+        onPress={() => navigation.navigate('Tabs')}
         title="Login"
         color="#841584"
         accessibilityLabel="Learn more about this purple button"
