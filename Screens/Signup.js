@@ -93,7 +93,7 @@ function Signup({navigation}) {
         </TouchableOpacity>
         <View style={styles.newAcc}>
           <Text>Already Registered ?</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate(Login)}>
             <Text
               style={{
                 color: '#33B0BD',
