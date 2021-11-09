@@ -1,17 +1,32 @@
-function MyTabs() {
+import React from 'react';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import Courses from '../Screens/Courses';
+import Home from '../Screens/Home';
+import Profile from '../Screens/Profile';
+
+import IconHome from '../Svg_Components/IconHome';
+import IconCourses from '../Svg_Components/IconCourses';
+import IconProfile from '../Svg_Components/IconProfile';
+
+const Tab = createMaterialBottomTabNavigator();
+
+export default function TabNavigator() {
   return (
     <Tab.Navigator
-      initialRouteName="Feed"
+      initialRouteName="Home"
       activeColor="#4ea3ad"
-      barStyle={{backgroundColor: 'black'}}>
+      barStyle={{backgroundColor: 'black'}}
+      screenOptions={{
+        tabBarLabel: false,
+      }}>
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          tabBarLabel: 'Home',
           tabBarIcon: ({color}) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} />
-            // <HomeIcon />
+            <IconHome width={32} height={32} stroke={color} />
           ),
         }}
       />
@@ -19,9 +34,8 @@ function MyTabs() {
         name="Courses"
         component={Courses}
         options={{
-          tabBarLabel: 'Courses',
           tabBarIcon: ({color}) => (
-            <MaterialCommunityIcons name="book-open" color={color} size={26} />
+            <IconCourses width={32} height={32} stroke={color} />
           ),
         }}
       />
@@ -29,10 +43,9 @@ function MyTabs() {
         name="Profile"
         component={Profile}
         options={{
-          tabBarLabel: 'Profile',
-          // tabBarIcon: ({color}) => (
-          //   <MaterialCommunityIcons name="account" color={color} size={26} />
-          // ),
+          tabBarIcon: ({color}) => (
+            <IconProfile width={32} height={32} stroke={color} />
+          ),
         }}
       />
     </Tab.Navigator>
