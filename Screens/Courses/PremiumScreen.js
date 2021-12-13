@@ -11,15 +11,29 @@ function PremiumScreen({navigation}) {
       </View>
 
       <View style={styles.start}>
-        <Text style={{color: '#EEEEEE', fontSize: 33, paddingTop: 54}}>
+        <Text
+          style={{
+            color: '#fff',
+            fontWeight: '600',
+            fontSize: 33,
+            paddingTop: 54,
+          }}>
           Start your Membership
         </Text>
-        <Text style={{color: '#EEEEEE', fontSize: 20, paddingTop: 33}}>
-          Get unlimited access to thousands of
+        <Text
+          style={{
+            color: '#EEEEEE',
+            fontSize: 20,
+            fontWeight: '200',
+            paddingTop: 33,
+          }}>
+          As a free user, you can only view
         </Text>
-        <Text style={{color: '#EEEEEE', fontSize: 20, paddingTop: 3}}>
-          classes on-demand and on-the-go.
+        <Text style={styles.description}>the promo video also</Text>
+        <Text style={styles.description}>
+          get unlimited access to thousands of
         </Text>
+        <Text style={styles.description}>classes on-demand and on-the-go.</Text>
       </View>
 
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -36,12 +50,12 @@ function PremiumScreen({navigation}) {
         style={{
           // flexDirection: 'column',
           // justifyContent: 'flex-end',
-          marginTop: 235,
+          marginTop: 175,
         }}>
         <View style={styles.blackbox}>
           <TouchableNativeFeedback>
             <View style={styles.bluebox}>
-              <Text style={{color: 'black', fontSize: 24, fontWeight: '500'}}>
+              <Text style={{color: 'white', fontSize: 24, fontWeight: '500'}}>
                 Start your Membership
               </Text>
             </View>
@@ -56,7 +70,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     color: '#EEEEEE',
-    backgroundColor: '#222831',
+    backgroundColor: '#191414',
   },
   start: {
     justifyContent: 'center',
@@ -74,6 +88,12 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 4,
   },
+  description: {
+    color: '#EEEEEE',
+    fontSize: 20,
+    fontWeight: '200',
+    paddingTop: 3,
+  },
   blackbox: {
     backgroundColor: 'black',
     width: 428,
@@ -84,7 +104,7 @@ const styles = StyleSheet.create({
   bluebox: {
     width: 380,
     height: 58,
-    backgroundColor: '#33B0BD',
+    backgroundColor: '#4285F4',
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',

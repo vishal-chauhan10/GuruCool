@@ -1,4 +1,5 @@
 package com.gurucool;
+import com.BV.LinearGradient.LinearGradientPackage;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +11,9 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
+    new LinearGradientPackage();
     return "Gurucool";
+
+    
   }
 }

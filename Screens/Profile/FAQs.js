@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Text, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Freqs from './../Components/Freqs';
+import Freqs from './../../Components/Freqs';
 
 function FAQs({navigation}) {
   return (
@@ -13,35 +13,33 @@ function FAQs({navigation}) {
           <Text></Text>
         </View>
         <Freqs
-          question="How do I apply for Mentor?"
+          question="How to get started with GuruCool?"
           answer="It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here,"
+          readable content of a page when looking at its layout. "
         />
 
         <Freqs
-          question="How do I apply for Mentor?"
+          question="System Requirments"
           answer="It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here,"
+          readable content of a page when looking at its layout."
         />
 
         <Freqs
-          question="How do I apply for Mentor?"
+          question="Learn more about GuruCool"
           answer="It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here,"
+          readable content of a page when looking at its layout. "
         />
 
         <Freqs
-          question="How do I apply for Mentor?"
+          question="How does GuruCool work?"
           answer="It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here,"
+          readable content of a page when looking at its layout"
+        />
+
+        <Freqs
+          question="How to be a mentor in GuruCool?"
+          answer="It is a long established fact that a reader will be distracted by the
+          readable content of a page when looking at its layout"
         />
       </View>
     </ScrollView>
@@ -51,8 +49,9 @@ function FAQs({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    color: '#EEEEEE',
-    backgroundColor: '#222831',
+    color: '#fff',
+    backgroundColor: '#191414',
+    paddingBottom: 25,
   },
   header: {
     justifyContent: 'center',

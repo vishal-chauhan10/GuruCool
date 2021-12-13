@@ -1,13 +1,14 @@
 import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 
-import Courses from '../Screens/Courses';
+import Courses from '../Screens/Courses/Courses';
 import Home from '../Screens/Home';
-import Profile from '../Screens/Profile';
 
 import IconHome from '../Svg_Components/IconHome';
 import IconCourses from '../Svg_Components/IconCourses';
 import IconProfile from '../Svg_Components/IconProfile';
+
+import ProfileNavigator from './ProfileNavigator';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -39,8 +40,8 @@ export default function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={Profile}
+        name="ProfileNavigator"
+        component={ProfileNavigator}
         options={{
           tabBarIcon: ({color}) => (
             <IconProfile width={32} height={32} stroke={color} />

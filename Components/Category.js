@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   textCat: {
     paddingHorizontal: 10,
     paddingVertical: 6,
-    color: 'black',
+    color: '#EEE',
     fontSize: 22,
   },
 });

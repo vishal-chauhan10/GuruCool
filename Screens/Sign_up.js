@@ -6,57 +6,52 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-
 import Home from './Home';
-import Sign_up from './Sign_up';
-import Download from './Profile/Download';
+import Login from './Login';
 import * as Animatable from 'react-native-animatable';
 import Feather from 'react-native-vector-icons/Feather';
-import Courses from './Courses/Courses';
-import Photo_Courses from './Courses/Photo_Courses';
-import Profile from './Profile/Profile';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-function Login({navigation}) {
+function Sign_up({navigation}) {
   const [data, setData] = React.useState({
     username: '',
     password: '',
+    confirm_password: '',
     check_textInputChange: false,
     secureTextEntry: true,
-    isValidUser: true,
-    isValidPassword: true,
+    confirm_secureTextEntry: true,
   });
 
   const textInputChange = val => {
-    if ((val.length = !0)) {
+    if (val.length !== 0) {
       setData({
         ...data,
-        email: val,
+        username: val,
         check_textInputChange: true,
       });
     } else {
       setData({
         ...data,
-        email: val,
+        username: val,
         check_textInputChange: false,
       });
     }
   };
 
   const handlePasswordChange = val => {
-    if (val.trim().length >= 8) {
-      setData({
-        ...data,
-        password: val,
-        isValidPassword: true,
-      });
-    } else {
-      setData({
-        ...data, // Array Destructuring
-        password: val,
-        isValidPassword: false,
-      });
-    }
+    setData({
+      ...data,
+      password: val,
+    });
   };
+
+  const handleConfirmPasswordChange = val => {
+    setData({
+      ...data,
+      confirm_password: val,
+    });
+  };
+
   const updateSecureTextEntry = () => {
     setData({
       ...data,
@@ -64,11 +59,17 @@ function Login({navigation}) {
     });
   };
 
+  const updateConfirmSecureTextEntry = () => {
+    setData({
+      ...data,
+      confirm_secureTextEntry: !data.confirm_secureTextEntry,
+    });
+  };
   return (
     <View style={styles.container}>
       <View style={styles.heading}>
         <Text style={{fontSize: 30, fontWeight: '700', color: '#fff'}}>
-          Welcome to GuruCool
+          Register here
         </Text>
       </View>
 
@@ -79,6 +80,27 @@ function Login({navigation}) {
           flexDirection: 'row',
           paddingHorizontal: 10,
         }}>
+        <FontAwesome
+          name="user-o"
+          style={{padding: 5}}
+          color="#fff"
+          size={20}
+        />
+        <TextInput
+          style={{
+            width: 330,
+            height: 51,
+            backgroundColor: '#191414',
+            borderRadius: 10,
+            borderWidth: 1,
+            borderColor: '#fff',
+          }}
+          placeholder="Full Name"
+          onChangeText={val => textInputChange(val)}
+        />
+      </View>
+
+      <View style={styles.fullName}>
         <Feather
           name="mail"
           style={{padding: 5}}
@@ -91,27 +113,47 @@ function Login({navigation}) {
             height: 51,
             backgroundColor: '#191414',
             borderRadius: 10,
-            borderColor: 'white',
             borderWidth: 1,
+            borderColor: '#fff',
           }}
-          // textAlign="left"
           placeholder="Email"
-          // placeholderTextColor="#fff"
-          // autoCapitalize="none"
-          onChangeText={val => textInputChange(val)}
+          // onChange={e => {
+          //   setUsernameReg(e.target.value);
+          // }}
         />
-        {data.check_textInputChange ? (
-          <Animatable.View animation="bounceIn">
+      </View>
+      <View style={styles.fullName}>
+        <Feather
+          name="lock"
+          style={{padding: 5}}
+          // color={colors.text}
+          size={20}
+        />
+        <TextInput
+          style={{
+            width: 330,
+            height: 51,
+            borderRadius: 10,
+            borderWidth: 1,
+            borderColor: '#fff',
+          }}
+          secureTextEntry={data.secureTextEntry ? true : false}
+          onChangeText={val => handlePasswordChange(val)}
+          placeholder="Password"
+        />
+        <TouchableOpacity onPress={updateSecureTextEntry}>
+          {data.secureTextEntry ? (
             <Feather
-              name="check-circle"
+              name="eye-off"
               style={{padding: 5}}
-              color="green"
+              color="grey"
               size={20}
             />
-          </Animatable.View>
-        ) : null}
+          ) : (
+            <Feather name="eye" style={{padding: 5}} color="grey" size={20} />
+          )}
+        </TouchableOpacity>
       </View>
-
       <View style={styles.fullName}>
         <Feather
           name="lock"
@@ -128,44 +170,27 @@ function Login({navigation}) {
             borderWidth: 1,
             borderColor: '#fff',
           }}
-          placeholder="Password"
-          // placeholderStyle={{
-          //   color: '#fff',
-          //   paddingLeft: 18,
-          //   placeholderTextColor: '#fff',
-          // }}
-          // placeholderTextColor="#fff"
-          secureTextEntry={data.secureTextEntry ? true : false}
-          // onChange={e => {
-          //   setUsernameReg(e.target.value);
-          // }}
+          secureTextEntry={data.confirm_secureTextEntry ? true : false}
+          placeholder="Confirm Password"
+          onChangeText={val => handleConfirmPasswordChange(val)}
         />
-        <TouchableOpacity onPress={updateSecureTextEntry}>
-          {data.secureTextEntry ? (
-            <Feather
-              name="eye-off"
-              style={{padding: 5}}
-              color="grey"
-              size={20}
-            />
+        <TouchableOpacity onPress={updateConfirmSecureTextEntry}>
+          {data.confirm_secureTextEntry ? (
+            <Feather name="eye-off" color="grey" size={20} />
           ) : (
-            <Feather name="eye" style={{padding: 5}} color="grey" size={20} />
+            <Feather name="eye" color="grey" size={20} />
           )}
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={{paddingLeft: 249, paddingTop: 11}}>
-        <Text>Recovery Password</Text>
-      </TouchableOpacity>
 
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
         <TouchableOpacity
           style={styles.btn}
-          onPress={() => navigation.navigate('Home')}>
-          <Text style={{fontSize: 25, color: '#fff'}}>Login</Text>
+          onPress={() => navigation.navigate(Home)}>
+          <Text style={{fontSize: 25, color: '#fff'}}>Sign Up</Text>
         </TouchableOpacity>
       </View>
-
-      <View style={{alignItems: 'center', paddingTop: 107, paddingBottom: 10}}>
+      <View style={{alignItems: 'center', paddingTop: 30, paddingBottom: 10}}>
         <Text style={{color: '#fff', fontWeight: '200', fontSize: 16}}>
           Or continue with
         </Text>
@@ -186,15 +211,15 @@ function Login({navigation}) {
       </View>
 
       <View style={styles.newAcc}>
-        <Text style={{fontWeight: '300'}}>Not a member ?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <Text style={{fontWeight: '300'}}>Already Registered ?</Text>
+        <TouchableOpacity onPress={() => navigation.navigate(Login)}>
           <Text
             style={{
               color: '#4285F4',
               paddingLeft: 5,
               textDecorationLine: 'underline',
             }}>
-            Register here
+            Login
           </Text>
         </TouchableOpacity>
       </View>
@@ -208,24 +233,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#191414',
   },
   heading: {
-    marginTop: 156,
+    // marginTop: 156,
+    marginTop: 116,
     justifyContent: 'center',
     alignItems: 'center',
   },
   fullName: {
-    paddingHorizontal: 10,
     flexDirection: 'row',
+    paddingHorizontal: 10,
     paddingTop: 25,
     alignItems: 'center',
   },
   btn: {
+    // padding: 10,
     height: 51,
     width: 330,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#4285F4',
     borderRadius: 10,
-    marginTop: 35,
+    marginTop: 49,
   },
   newAcc: {
     flexDirection: 'row',
@@ -243,4 +270,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default Sign_up;

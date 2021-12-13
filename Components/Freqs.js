@@ -7,10 +7,14 @@ export default function Freqs(props) {
     <View style={styles.container}>
       <View style={styles.qstn}>
         <Icon size={32} name="caret-right" color={'#fff'} />
-        <Text style={{fontSize: 27, color: '#fff'}}>{props.question}</Text>
+        <Text style={{fontSize: 21, color: '#fff', fontWeight: '300'}}>
+          {props.question}
+        </Text>
       </View>
-      <View style={{paddingHorizontal: 19, paddingTop: 21}}>
-        <Text style={{color: 'white', fontSize: 15}}>{props.answer}</Text>
+      <View style={{paddingHorizontal: 46, paddingTop: 11}}>
+        <Text style={{color: 'white', fontSize: 15, fontWeight: '300'}}>
+          {props.answer}
+        </Text>
       </View>
     </View>
   );

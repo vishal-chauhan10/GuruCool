@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Text, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Profile from './Profile/';
 
 function Aboutus({navigation}) {
   return (
@@ -13,10 +14,10 @@ function Aboutus({navigation}) {
       }}>
       <View style={styles.header}>
         <Icon
-          size={32}
+          size={30}
           name="long-arrow-left"
           color={'#fff'}
-          // onPress={() => navigation.navigate('Profile')}
+          onPress={() => navigation.navigate('Profile')}
         />
         <Text style={{fontSize: 27, color: '#fff'}}>About Us</Text>
         <Text></Text>
@@ -27,7 +28,7 @@ function Aboutus({navigation}) {
           width: '100%',
           height: 1,
           borderColor: 'white',
-          borderWidth: 1,
+          borderWidth: 0.5,
         }}
       />
       <ScrollView>
@@ -82,10 +83,10 @@ function Aboutus({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    color: '#EEEEEE',
+    color: '#fff',
     paddingHorizontal: 24,
     paddingVertical: 24,
-    backgroundColor: '#222831',
+    backgroundColor: '#191414',
   },
   header: {
     justifyContent: 'center',
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 20,
     paddingVertical: 10,
-    backgroundColor: '#222831',
+    backgroundColor: '#191414',
   },
   txt: {
     paddingTop: 15,
