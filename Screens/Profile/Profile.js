@@ -1,35 +1,124 @@
 import React from 'react';
+import {View, StyleSheet, Text, Image} from 'react-native';
 import {
-  View,
-  StyleSheet,
-  Text,
-  Image,
-  TouchableNativeFeedbackBase,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
-import ProfileComp from '../../Components/ProfileComp';
-import {TouchableNativeFeedback} from 'react-native-gesture-handler';
+  TouchableNativeFeedback,
+  TouchableOpacity,
+} from 'react-native-gesture-handler';
+import IconBulb from '../../Svg_Components/IconBulb';
 import Aboutus from './Aboutus';
 import FAQs from './FAQs';
 import Signup from '../Signup';
 import LinearGradient from 'react-native-linear-gradient';
+import Feather from 'react-native-vector-icons/Feather';
+import ProfileList from './../../Components/ProfileList';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Download from './Download';
 
 function Profile({navigation}) {
   return (
     <View style={styles.container}>
-      <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']}>
-        <Text style={{fontSize: 25, fontWeight: '200', color: '#fff'}}>
-          Become a Mentor
-        </Text>
-      </LinearGradient>
       <View
         style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginTop: 31,
+          marginBottom: 30,
+        }}>
+        <IconBulb width={30} height={30} />
+        <Text
+          style={{
+            fontSize: 25,
+            fontWeight: 'bold',
+            color: '#fff',
+            marginLeft: 8,
+          }}>
+          Become a Mentor
+        </Text>
+      </View>
+      <LinearGradient
+        style={{
+          borderTopLeftRadius: 30,
+          borderTopRightRadius: 30,
           width: 372,
           height: 218,
-          backgroundColor: '#4285F4',
-          borderRadius: 30,
           paddingTop: 27,
-        }}></View>
+        }}
+        colors={['#4285F4', '#191414']}>
+        <View
+          style={{
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <View
+            style={{
+              width: 169,
+              height: 169,
+              borderRadius: 85,
+              backgroundColor: 'white',
+            }}
+          />
+
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginTop: 12,
+            }}>
+            <Text
+              style={{
+                fontSize: 30,
+                fontWeight: '700',
+                color: 'white',
+                marginRight: 12,
+              }}>
+              Vishal Chauhan
+            </Text>
+            <TouchableOpacity>
+              <FontAwesome5 name="pen" size={20} color="#fff" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </LinearGradient>
+
+      <View style={{marginTop: 40}}>
+        <Text style={{paddingTop: 29}}>Video Preferences</Text>
+        <ProfileList
+          titleText="Download Options"
+          onPress={() => navigation.navigate('Download')}
+        />
+        <ProfileList titleText="Video playback Options" />
+
+        <Text style={{paddingTop: 29}}>Help and Support</Text>
+        <ProfileList
+          titleText="About GuruCool"
+          onPress={() => navigation.navigate('Aboutus')}
+        />
+        <ProfileList
+          titleText="Frequently Asked Questions"
+          onPress={() => navigation.navigate('FAQs')}
+        />
+        <ProfileList titleText="Share the GuruCool App" />
+      </View>
+
+      <View style={{marginTop: 50}}>
+        <TouchableOpacity
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            // marginTop: 50,
+          }}>
+          <Text
+            style={{
+              color: '#F90A18',
+              fontSize: 25,
+              fontWeight: '700',
+            }}>
+            Sign Out
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

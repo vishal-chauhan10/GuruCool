@@ -30,7 +30,7 @@ function MyStack() {
       <Stack.Screen name="Login" component={Login} />
       {/* <Stack.Screen name="Profile" component={Profile} /> */}
 
-      <Stack.Screen name="Home" component={Home} />
+      {/* <Stack.Screen name="Home" component={Home} /> */}
       <Stack.Screen name="ChangePass" component={ChangePass} />
       <Stack.Screen name="Tabs" component={TabNavigator} />
     </Stack.Navigator>

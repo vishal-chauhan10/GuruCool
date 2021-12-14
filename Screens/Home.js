@@ -10,6 +10,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 // import {TextInput} from 'react-native-paper';
 import {RadioButton} from 'react-native-paper';
 import Category from './../Components/Category';
@@ -41,7 +42,12 @@ export default function Home(props) {
         <Text style={{fontWeight: '500', fontSize: 25}}>Vishal Chauhan 👋</Text>
       </View>
       <View style={{alignItems: 'center'}}>
-        <View style={styles.share}>
+        {/* <View style={styles.share}> */}
+        <LinearGradient
+          style={styles.share}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}
+          colors={['#A1C4FD', '#FDA085']}>
           <Text
             style={{
               fontSize: 22,
@@ -64,7 +70,8 @@ export default function Home(props) {
             }}>
             <Text style={{fontSize: 20}}>Share</Text>
           </TouchableOpacity>
-        </View>
+        </LinearGradient>
+        {/* </View> */}
       </View>
     </View>
   );

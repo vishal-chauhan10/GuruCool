@@ -10,7 +10,13 @@ import Home from './Home';
 import Login from './Login';
 import * as Animatable from 'react-native-animatable';
 import Feather from 'react-native-vector-icons/Feather';
+import FullName from '../Components/FullName';
+import Password from '../Components/Password';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import IconGoogle from '../Svg_Components/IconGoogle';
+import IconApple from './../Svg_Components/IconApple';
+import IconFb from './../Svg_Components/IconFb';
+import LinearGradient from 'react-native-linear-gradient';
 
 function Sign_up({navigation}) {
   const [data, setData] = React.useState({
@@ -73,102 +79,17 @@ function Sign_up({navigation}) {
         </Text>
       </View>
 
-      <View
-        style={{
-          paddingTop: 77,
-          alignItems: 'center',
-          flexDirection: 'row',
-          paddingHorizontal: 10,
-        }}>
-        <FontAwesome
-          name="user-o"
-          style={{padding: 5}}
-          color="#fff"
-          size={20}
-        />
-        <TextInput
-          style={{
-            width: 330,
-            height: 51,
-            backgroundColor: '#191414',
-            borderRadius: 10,
-            borderWidth: 1,
-            borderColor: '#fff',
-          }}
-          placeholder="Full Name"
-          onChangeText={val => textInputChange(val)}
-        />
-      </View>
+      <FullName iconName="user" placeholder="FullName" />
+      <FullName iconName="mail" placeholder="Email" />
+      <Password iconName="lock" placeholder="Password" />
 
       <View style={styles.fullName}>
-        <Feather
-          name="mail"
-          style={{padding: 5}}
-          // color={colors.text}
-          size={20}
-        />
+        <Feather name="lock" style={{padding: 5}} size={20} />
         <TextInput
           style={{
-            width: 330,
-            height: 51,
+            width: 270,
+            height: 49,
             backgroundColor: '#191414',
-            borderRadius: 10,
-            borderWidth: 1,
-            borderColor: '#fff',
-          }}
-          placeholder="Email"
-          // onChange={e => {
-          //   setUsernameReg(e.target.value);
-          // }}
-        />
-      </View>
-      <View style={styles.fullName}>
-        <Feather
-          name="lock"
-          style={{padding: 5}}
-          // color={colors.text}
-          size={20}
-        />
-        <TextInput
-          style={{
-            width: 330,
-            height: 51,
-            borderRadius: 10,
-            borderWidth: 1,
-            borderColor: '#fff',
-          }}
-          secureTextEntry={data.secureTextEntry ? true : false}
-          onChangeText={val => handlePasswordChange(val)}
-          placeholder="Password"
-        />
-        <TouchableOpacity onPress={updateSecureTextEntry}>
-          {data.secureTextEntry ? (
-            <Feather
-              name="eye-off"
-              style={{padding: 5}}
-              color="grey"
-              size={20}
-            />
-          ) : (
-            <Feather name="eye" style={{padding: 5}} color="grey" size={20} />
-          )}
-        </TouchableOpacity>
-      </View>
-      <View style={styles.fullName}>
-        <Feather
-          name="lock"
-          style={{padding: 5}}
-          // color={colors.text}
-          size={20}
-        />
-        <TextInput
-          style={{
-            width: 330,
-            height: 51,
-            backgroundColor: '#191414',
-            borderRadius: 10,
-            borderWidth: 1,
-            borderColor: '#fff',
           }}
           secureTextEntry={data.confirm_secureTextEntry ? true : false}
           placeholder="Confirm Password"
@@ -190,10 +111,38 @@ function Sign_up({navigation}) {
           <Text style={{fontSize: 25, color: '#fff'}}>Sign Up</Text>
         </TouchableOpacity>
       </View>
-      <View style={{alignItems: 'center', paddingTop: 30, paddingBottom: 10}}>
+
+      <View
+        style={{
+          alignItems: 'center',
+          paddingTop: 30,
+          paddingBottom: 10,
+          flexDirection: 'row',
+          justifyContent: 'space-evenly',
+        }}>
+        <LinearGradient
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}
+          colors={['#191414', '#Fff']}
+          style={{
+            width: 66,
+            height: 1,
+            backgroundColor: 'white',
+          }}
+        />
         <Text style={{color: '#fff', fontWeight: '200', fontSize: 16}}>
           Or continue with
         </Text>
+        <LinearGradient
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}
+          colors={['#fff', '#191414']}
+          style={{
+            width: 66,
+            height: 1,
+            backgroundColor: 'white',
+          }}
+        />
       </View>
 
       <View
@@ -203,11 +152,17 @@ function Sign_up({navigation}) {
           justifyContent: 'space-around',
           padding: 10,
         }}>
-        <View style={styles.socialIcons}></View>
+        <TouchableOpacity style={styles.socialIcons}>
+          <IconGoogle width={20} height={20} />
+        </TouchableOpacity>
 
-        <View style={styles.socialIcons}></View>
+        <TouchableOpacity style={styles.socialIcons}>
+          <IconApple width={20} height={20} />
+        </TouchableOpacity>
 
-        <View style={styles.socialIcons}></View>
+        <TouchableOpacity style={styles.socialIcons}>
+          <IconFb width={20} height={20} />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.newAcc}>
@@ -231,21 +186,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#191414',
+    paddingHorizontal: 43,
   },
   heading: {
-    // marginTop: 156,
+    marginBottom: 52,
     marginTop: 116,
     justifyContent: 'center',
     alignItems: 'center',
   },
   fullName: {
     flexDirection: 'row',
+    width: 340,
+    height: 52,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'white',
     paddingHorizontal: 10,
-    paddingTop: 25,
+    marginTop: 25,
     alignItems: 'center',
   },
   btn: {
-    // padding: 10,
     height: 51,
     width: 330,
     justifyContent: 'center',
@@ -256,7 +216,7 @@ const styles = StyleSheet.create({
   },
   newAcc: {
     flexDirection: 'row',
-    paddingTop: 18,
+    paddingTop: 29,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -266,7 +226,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'white',
     borderRadius: 10,
-    // padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

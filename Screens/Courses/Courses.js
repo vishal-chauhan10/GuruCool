@@ -11,6 +11,7 @@ import {
 import {ScrollView} from 'react-native-gesture-handler';
 
 import ListItem from './../../Components/ListItem';
+import FullName from './../../Components/FullName';
 
 function Courses({navigation}) {
   return (
@@ -20,11 +21,17 @@ function Courses({navigation}) {
           <View style={{flexDirection: 'column'}}>
             <View style={{flexDirection: 'row'}}>
               <View style={styles.alphabets}>
-                <Text style={{fontSize: 44, color: '#fff', fontWeight: '900'}}>
+                <Text
+                  style={{
+                    fontSize: 44,
+                    color: '#fff',
+                    fontWeight: '900',
+                  }}>
                   S
                 </Text>
               </View>
-              <View style={styles.alphabets}>
+              <View
+                style={({transform: [{rotate: '-20deg'}]}, styles.alphabets)}>
                 <Text style={{fontSize: 44, color: '#fff', fontWeight: '900'}}>
                   A
                 </Text>
@@ -67,19 +74,8 @@ function Courses({navigation}) {
           </View>
         </View>
 
-        <View style={{paddingTop: 33}}>
-          <TextInput
-            style={{
-              width: 373,
-              height: 62,
-              backgroundColor: '#fff',
-              borderRadius: 10,
-              borderWidth: 1,
-              borderColor: '#fff',
-            }}
-            placeholder="Search"
-            placeholderTextColor="#000"
-          />
+        <View style={{paddingTop: 13}}>
+          <FullName iconName="search" placeholder="Search" />
         </View>
 
         <View style={{paddingTop: 37}}>
@@ -99,7 +95,16 @@ function Courses({navigation}) {
               backgroundColor: 'grey',
               borderBottomEndRadius: 23,
               borderBottomLeftRadius: 23,
-            }}></View>
+              flexDirection: 'column',
+            }}>
+            <View
+              style={{width: 174, height: 137, backgroundColor: 'red'}}></View>
+            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+              <Text style={{fontSize: 25, color: '#000', fontWeight: '500'}}>
+                Photography
+              </Text>
+            </View>
+          </View>
           <View
             style={{
               width: 174,
@@ -150,6 +155,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#30CFD0',
     borderRadius: 27,
     marginTop: 56,
+    // marginBottom: 26,
     paddingHorizontal: 28,
   },
   alphabets: {
@@ -158,6 +164,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 17,
+    marginBottom: 25,
+    marginHorizontal: 12,
+    // transform: [{rotate: '-20deg'}],
   },
 });
 
