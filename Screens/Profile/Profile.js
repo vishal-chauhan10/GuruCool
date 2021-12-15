@@ -124,7 +124,7 @@ function Profile({navigation}) {
           />
         </View>
 
-        <View style={{marginTop: 50, marginBottom: 10}}>
+        <View style={{marginTop: 50, marginBottom: 50}}>
           <TouchableOpacity
             style={{
               alignItems: 'center',

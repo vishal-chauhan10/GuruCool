@@ -1,5 +1,5 @@
 import React from 'react';
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Fontisto';
 
 import Courses from '../Screens/Courses/Courses';
@@ -14,7 +14,7 @@ import Search from './../Screens/Search';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import CourseNavigator from './CourseNavigator';
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
   function getTabs(route) {
@@ -25,16 +25,20 @@ export default function TabNavigator() {
 
     console.log('Route Name: ', routeName);
 
-    return routeName == 'Download' ? false : true;
+    return routeName == 'Course_View' ? false : true;
   }
 
   return (
     <Tab.Navigator
       initialRouteName="Home"
       activeColor="#4ea3ad"
-      barStyle={{backgroundColor: '#0b0909'}}
-      screenOptions={{
-        tabBarLabel: false,
+      style={{backgroundColor: '#0b0909'}}
+      tabBarOptions={{
+        showLabel: false,
+        keyboardHidesTabBar: true,
+        style: {
+          backgroundColor: '#0b0909',
+        },
       }}>
       <Tab.Screen
         name="Home"
@@ -62,17 +66,18 @@ export default function TabNavigator() {
       <Tab.Screen
         name="CourseNavigator"
         component={CourseNavigator}
-        options={{
+        options={({route}) => ({
+          tabBarVisible: getTabs(route),
           tabBarIcon: ({color}) => (
             <IconCourses width={32} height={32} stroke={color} />
           ),
-        }}
+        })}
       />
       <Tab.Screen
         name="ProfileNavigator"
         component={ProfileNavigator}
         options={({route}) => ({
-          tabBarVisible: getTabs(route),
+          tabBarVisible: false,
           tabBarIcon: ({color}) => (
             <IconProfile width={32} height={32} stroke={color} />
           ),

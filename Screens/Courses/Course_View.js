@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import Description from '../../Components/Description';
 import VideoLesson from '../../Components/VideoLesson';
+import Course_View_Navigator from '../../Navigators/Course_View_Navigator';
 
 const {width} = Dimensions.get('window');
 
@@ -46,6 +47,9 @@ function Course_View(props) {
             <Text>1h 30 min</Text>
             <Text style={{marginHorizontal: 16}}>•</Text>
             <Text>2.3k students</Text>
+          </View>
+          <View style={{flex: 1}}>
+            <Course_View_Navigator />
           </View>
 
           <VideoLesson
