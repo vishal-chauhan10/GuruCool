@@ -40,8 +40,8 @@ function FullName(props) {
       <Feather name={props.iconName} size={20} style={{padding: 5}} />
       <TextInput
         style={{
-          width: 300,
-          height: 49,
+          width: 289,
+          height: 47,
           backgroundColor: '#191414',
         }}
         placeholder={props.placeholder}
@@ -51,7 +51,7 @@ function FullName(props) {
         <Animatable.View animation="bounceIn">
           <Feather
             name="check-circle"
-            style={{padding: 5}}
+            style={{marginLeft: 5}}
             color="green"
             size={20}
           />
@@ -63,7 +63,7 @@ function FullName(props) {
 
 const styles = StyleSheet.create({
   container: {
-    width: 340,
+    width: 325,
     height: 52,
     alignItems: 'center',
     flexDirection: 'row',

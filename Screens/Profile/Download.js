@@ -8,12 +8,19 @@ import {
   TouchableNativeFeedback,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
-function Download(props) {
+function Download({navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.topLayer}>
-        <Icon size={30} name="long-arrow-left" color={'#fff'} />
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+          <AntDesign
+            size={25}
+            name="left"
+            style={{paddingTop: 14, paddingLeft: 14}}
+          />
+        </TouchableOpacity>
         <Text
           style={{
             fontSize: 24,

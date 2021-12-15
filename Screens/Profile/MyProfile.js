@@ -9,12 +9,17 @@ import {
   Image,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import FullName from '../../Components/FullName';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Profile from './Profile';
 
-function MyProfile(props) {
+function MyProfile({navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.topLayer}>
-        <Icon size={30} name="long-arrow-left" color={'#fff'} />
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+          <AntDesign size={25} name="left" style={{padding: 5}} />
+        </TouchableOpacity>
         <Text
           style={{
             fontSize: 24,
@@ -24,12 +29,13 @@ function MyProfile(props) {
           }}>
           Profile
         </Text>
-        <TouchableNativeFeedback style={{backgroundColor: 'red'}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
           <Text style={{fontSize: 18, color: 'white', fontWeight: '300'}}>
             Done
           </Text>
-        </TouchableNativeFeedback>
+        </TouchableOpacity>
       </View>
+
       <View
         style={{
           justifyContent: 'center',
@@ -42,70 +48,11 @@ function MyProfile(props) {
           }}
         />
       </View>
-
-      <View style={styles.fullName}>
-        <TextInput
-          style={{
-            width: 341,
-            height: 51,
-            backgroundColor: '#191414',
-            borderRadius: 10,
-            color: 'white',
-            borderWidth: 1,
-            borderColor: '#fff',
-          }}
-          // secureTextEntry={true}
-          placeholder="First Name"
-          placeholderTextColor="#9C9C9C"
-        />
-      </View>
-      <View style={styles.fullName}>
-        <TextInput
-          style={{
-            width: 341,
-            height: 51,
-            backgroundColor: '#191414',
-            borderRadius: 10,
-            color: 'white',
-            borderWidth: 1,
-            borderColor: '#fff',
-          }}
-          // secureTextEntry={true}
-          placeholder="Last Name"
-          placeholderTextColor="#9C9C9C"
-        />
-      </View>
-
-      <View style={([styles.fullName], {paddingTop: 23, paddingLeft: 24})}>
-        <TextInput
-          style={{
-            width: 341,
-            height: 51,
-            backgroundColor: '#191414',
-            borderRadius: 10,
-            color: 'white',
-            borderWidth: 1,
-            borderColor: '#fff',
-          }}
-          placeholder="Email"
-          placeholderTextColor="#9C9C9C"
-        />
-      </View>
-
-      <View style={([styles.fullName], {paddingTop: 23, paddingLeft: 24})}>
-        <TextInput
-          style={{
-            width: 341,
-            height: 51,
-            backgroundColor: '#191414',
-            borderRadius: 10,
-            color: 'white',
-            borderWidth: 1,
-            borderColor: '#fff',
-          }}
-          placeholder="Mobile"
-          placeholderTextColor="#9C9C9C"
-        />
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <FullName iconName="user" placeholder="First Name" />
+        <FullName iconName="user" placeholder="Last Name" />
+        <FullName iconName="user" placeholder="Mobile" />
+        <FullName iconName="user" placeholder="Email" />
       </View>
 
       <View
@@ -114,7 +61,7 @@ function MyProfile(props) {
           alignItems: 'center',
           marginTop: 83,
         }}>
-        <TouchableNativeFeedback>
+        <TouchableOpacity>
           <Text
             style={{
               fontSize: 20,
@@ -124,7 +71,7 @@ function MyProfile(props) {
             }}>
             Change Password
           </Text>
-        </TouchableNativeFeedback>
+        </TouchableOpacity>
       </View>
     </View>
   );

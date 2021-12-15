@@ -7,11 +7,13 @@ import {
   Image,
   TouchableNativeFeedback,
   TextInput,
+  TouchableOpacity,
 } from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
 import ListItem from './../../Components/ListItem';
 import FullName from './../../Components/FullName';
+import CourseTitle from '../../Components/CourseTitle';
 
 function Courses({navigation}) {
   return (
@@ -87,56 +89,47 @@ function Courses({navigation}) {
             4 Results
           </Text>
         </View>
-        <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-          <View
-            style={{
-              width: 174,
-              height: 183,
-              backgroundColor: 'grey',
-              borderBottomEndRadius: 23,
-              borderBottomLeftRadius: 23,
-              flexDirection: 'column',
-            }}>
-            <View
-              style={{width: 174, height: 137, backgroundColor: 'red'}}></View>
-            <View style={{justifyContent: 'center', alignItems: 'center'}}>
-              <Text style={{fontSize: 25, color: '#000', fontWeight: '500'}}>
-                Photography
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              width: 174,
-              height: 183,
-              backgroundColor: 'grey',
-              borderBottomEndRadius: 23,
-              borderBottomLeftRadius: 23,
-            }}></View>
-        </View>
-
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'space-around',
-            paddingTop: 25,
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            paddingHorizontal: 8,
           }}>
-          <View
-            style={{
-              width: 174,
-              height: 183,
-              backgroundColor: 'grey',
-              borderBottomEndRadius: 23,
-              borderBottomLeftRadius: 23,
-            }}></View>
-          <View
-            style={{
-              width: 174,
-              height: 183,
-              backgroundColor: 'grey',
-              borderBottomEndRadius: 23,
-              borderBottomLeftRadius: 23,
-            }}></View>
+          <CourseTitle
+            source={{
+              uri: 'https://images.pexels.com/photos/1787220/pexels-photo-1787220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+            }}
+            title="Media"
+            onPress={() => navigation.navigate('Category_Courses')}
+          />
+
+          <CourseTitle
+            source={{
+              uri: 'https://images.pexels.com/photos/1787220/pexels-photo-1787220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+            }}
+            title="Media"
+          />
+
+          <CourseTitle
+            source={{
+              uri: 'https://images.pexels.com/photos/1787220/pexels-photo-1787220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+            }}
+            title="Media"
+          />
+          <CourseTitle
+            source={{
+              uri: 'https://images.pexels.com/photos/1787220/pexels-photo-1787220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+            }}
+            title="Media"
+          />
+
+          <CourseTitle
+            source={{
+              uri: 'https://images.pexels.com/photos/1787220/pexels-photo-1787220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+            }}
+            title="Media"
+          />
         </View>
       </View>
     </ScrollView>
@@ -147,7 +140,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#191414',
-    paddingHorizontal: 17,
+    paddingHorizontal: 16,
   },
   sale: {
     width: 373,

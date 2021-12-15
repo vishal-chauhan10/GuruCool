@@ -1,7 +1,14 @@
 import React from 'react';
-import {View, StyleSheet, Text, ScrollView} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Profile from './Profile/';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 function Aboutus({navigation}) {
   return (
@@ -13,12 +20,9 @@ function Aboutus({navigation}) {
         alignItems: 'center',
       }}>
       <View style={styles.header}>
-        <Icon
-          size={30}
-          name="long-arrow-left"
-          color={'#fff'}
-          onPress={() => navigation.navigate('Profile')}
-        />
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+          <AntDesign size={25} name="left" style={{padding: 5}} />
+        </TouchableOpacity>
         <Text style={{fontSize: 27, color: '#fff'}}>About Us</Text>
         <Text></Text>
       </View>

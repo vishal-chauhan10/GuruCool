@@ -16,7 +16,6 @@ import MyProfile from './Screens/Profile/MyProfile';
 import FAQs from './Screens/Profile/FAQs';
 import Download from './Screens/Profile/Download';
 import Courses from './Screens/Courses/Courses';
-import Photo_Courses from './Screens/Courses/Photo_Courses';
 import Profile from './Screens/Profile/Profile';
 
 const Stack = createStackNavigator();

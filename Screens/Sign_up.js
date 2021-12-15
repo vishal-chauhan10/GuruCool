@@ -84,12 +84,13 @@ function Sign_up({navigation}) {
       <Password iconName="lock" placeholder="Password" />
 
       <View style={styles.fullName}>
-        <Feather name="lock" style={{padding: 5}} size={20} />
+        <Feather name="lock" size={20} />
         <TextInput
           style={{
-            width: 270,
+            width: 268,
             height: 49,
             backgroundColor: '#191414',
+            paddingLeft: 7,
           }}
           secureTextEntry={data.confirm_secureTextEntry ? true : false}
           placeholder="Confirm Password"
@@ -196,18 +197,18 @@ const styles = StyleSheet.create({
   },
   fullName: {
     flexDirection: 'row',
-    width: 340,
+    width: 325,
     height: 52,
     borderRadius: 10,
     borderWidth: 1,
     borderColor: 'white',
-    paddingHorizontal: 10,
+    paddingHorizontal: 6,
     marginTop: 25,
     alignItems: 'center',
   },
   btn: {
     height: 51,
-    width: 330,
+    width: 325,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#4285F4',

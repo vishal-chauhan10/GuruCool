@@ -1,14 +1,24 @@
 import React from 'react';
-import {View, StyleSheet, Text, ScrollView} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Freqs from './../../Components/Freqs';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Profile from './Profile';
 
 function FAQs({navigation}) {
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Icon size={32} name="long-arrow-left" color={'#fff'} />
+          <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+            <AntDesign size={25} name="left" style={{padding: 5}} />
+          </TouchableOpacity>
           <Text style={{fontSize: 27, color: '#fff'}}>FAQs</Text>
           <Text></Text>
         </View>

@@ -45,8 +45,8 @@ function Password(props) {
       <Feather name={props.iconName} style={{padding: 5}} size={20} />
       <TextInput
         style={{
-          width: 270,
-          height: 49,
+          width: 260,
+          height: 50,
           backgroundColor: '#191414',
         }}
         placeholder={props.placeholder}
@@ -66,7 +66,7 @@ function Password(props) {
 const styles = StyleSheet.create({
   container: {
     marginTop: 25,
-    width: 340,
+    width: 325,
     height: 52,
     borderRadius: 10,
     borderWidth: 1,
