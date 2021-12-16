@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Lessons from '../Screens/Courses/Lessons';
-import Description from '../Screens/Courses/Description';
+import CourseInfo from '../Screens/Courses/CourseInfo';
 import {NavigationContainer} from '@react-navigation/native';
 
 const Tab = createMaterialTopTabNavigator();
@@ -11,7 +11,7 @@ function Course_View_Navigator(props) {
   return (
     <Tab.Navigator tabBar={props => <MyTabBar {...props} />}>
       <Tab.Screen name="Lessons" component={Lessons} />
-      <Tab.Screen name="Description" component={Description} />
+      <Tab.Screen name="Description" component={CourseInfo} />
     </Tab.Navigator>
   );
 }

@@ -5,7 +5,7 @@ import VideoLesson from './../../Components/VideoLesson';
 function Lessons(props) {
   return (
     <VideoLesson
-      iconName={'lock'}
+      iconName={'unlock'}
       videoTitle={'Promo Video'}
       videoTime={'2 mins'}
     />

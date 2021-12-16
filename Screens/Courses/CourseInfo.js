@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
+import Description from '../../Components/Description';
 
-function Description(props) {
+function CourseInfo(props) {
   return (
     <Description
       description={
@@ -19,4 +20,4 @@ const styles = StyleSheet.create({
   container: {},
 });
 
-export default Description;
+export default CourseInfo;
