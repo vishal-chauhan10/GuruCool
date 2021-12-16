@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
+import VideoLesson from './../../Components/VideoLesson';
 
 function Lessons(props) {
   return (

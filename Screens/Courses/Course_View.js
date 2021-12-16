@@ -52,7 +52,7 @@ function Course_View(props) {
             <Course_View_Navigator />
           </View>
 
-          <VideoLesson
+          {/* <VideoLesson
             iconName={'unlock'}
             videoTitle={'Promo Video'}
             videoTime={'2 mins'}
@@ -72,7 +72,7 @@ function Course_View(props) {
             language={'Marathi'}
             update={'31, Dec 2021'}
             subtitle={'English'}
-          />
+          /> */}
         </View>
       </View>
     </ScrollView>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Lessons from '../Screens/Courses/Lessons';
 import Description from '../Screens/Courses/Description';
@@ -9,12 +9,10 @@ const Tab = createMaterialTopTabNavigator();
 
 function Course_View_Navigator(props) {
   return (
-    <NavigationContainer independent={true}>
-      <Tab.Navigator tabBar={props => <MyTabBar {...props} />}>
-        <Tab.Screen name="Lessons" component={Lessons} />
-        <Tab.Screen name="Description" component={Description} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator tabBar={props => <MyTabBar {...props} />}>
+      <Tab.Screen name="Lessons" component={Lessons} />
+      <Tab.Screen name="Description" component={Description} />
+    </Tab.Navigator>
   );
 }
 
@@ -69,6 +67,7 @@ function MyTabBar({state, descriptors, navigation, position}) {
 
           return (
             <TouchableOpacity
+              key={index}
               accessibilityRole="button"
               accessibilityState={isFocused ? {selected: true} : {}}
               accessibilityLabel={options.tabBarAccessibilityLabel}

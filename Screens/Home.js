@@ -1,23 +1,7 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  SectionList,
-  FlatList,
-  TextInput,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 // import {TextInput} from 'react-native-paper';
-import {RadioButton} from 'react-native-paper';
-import Category from './../Components/Category';
-import EBooks from '../Components/EBooks';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import Radio_Btn from './../Questions/Radio_Btn';
-import Search from './../Svg_Components/Search.svg';
 
 // const ListItem = ({item}) => {
 //   return (
