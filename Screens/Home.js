@@ -1,94 +1,214 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  SectionList,
+  Text,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 // import {TextInput} from 'react-native-paper';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
-// const ListItem = ({item}) => {
-//   return (
-//     <View style={styles.item}>
-//       <Image
-//         source={{
-//           uri: item.uri,
-//         }}
-//         style={styles.itemPhoto}
-//         resizeMode="cover"
-//       />
-//       <Text style={styles.itemText}>{item.text}</Text>
-//     </View>
-//   );
-// };
-
-export default function Home(props) {
+const ListItem = ({item}) => {
   return (
-    <View style={styles.container}>
-      <View style={{paddingVertical: 36, paddingHorizontal: 24}}>
-        <Text style={{fontWeight: '200', fontSize: 25}}>Hello,</Text>
-        <Text style={{fontWeight: '500', fontSize: 25}}>Vishal Chauhan 👋</Text>
-      </View>
-      <View style={{alignItems: 'center'}}>
-        {/* <View style={styles.share}> */}
-        <LinearGradient
-          style={styles.share}
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 0}}
-          colors={['#A1C4FD', '#FDA085']}>
-          <Text
-            style={{
-              fontSize: 22,
-              color: '#000',
-              fontWeight: '500',
-              paddingTop: 15,
-              paddingRight: 15,
-            }}>
-            Share with Friends
-          </Text>
+    <View style={styles.item}>
+      <Image
+        source={{
+          uri: item.uri,
+        }}
+        style={styles.itemPhoto}
+        resizeMode="cover"
+      />
+      <Text style={styles.itemText}>{item.text}</Text>
+      <Text style={styles.itemCourse}>{item.course}</Text>
+    </View>
+  );
+};
 
-          <TouchableOpacity
-            style={{
-              width: 149,
-              height: 61,
-              borderRadius: 30,
-              backgroundColor: '#1B0808',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text style={{fontSize: 20}}>Share</Text>
-          </TouchableOpacity>
-        </LinearGradient>
-        {/* </View> */}
+const Recomended = ({item}) => {
+  return (
+    <View style={styles.item}>
+      <Image
+        source={{
+          uri: item.uri,
+        }}
+        style={styles.itemRecomendedPhoto}
+        resizeMode="cover"
+      />
+      <Text style={styles.itemText}>{item.text}</Text>
+      <Text style={styles.itemCourse}>{item.course}</Text>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}>
+        <View
+          style={{flexDirection: 'row', marginHorizontal: 10, marginTop: 5}}>
+          <MaterialIcons
+            name="access-time"
+            size={20}
+            color={'#fff'}
+            // opacity={0.4}
+          />
+          <Text style={{fontSize: 18, color: '#fff'}}>{item.time}</Text>
+        </View>
+
+        <View
+          style={{flexDirection: 'row', marginHorizontal: 10, marginTop: 5}}>
+          <AntDesign
+            name="staro"
+            size={20}
+            color={'#fff'}
+            // opacity={0.4}
+          />
+          <Text style={{fontSize: 18, color: '#fff'}}>{item.ratings}</Text>
+        </View>
       </View>
     </View>
   );
+};
+
+export default function Home(props) {
+  return (
+    <ScrollView>
+      <View style={styles.container}>
+        <View style={{paddingVertical: 36}}>
+          <Text style={{fontWeight: '200', fontSize: 25}}>Hello,</Text>
+          <Text style={{fontWeight: '500', fontSize: 25}}>
+            Vishal Chauhan 👋
+          </Text>
+        </View>
+        <View style={{alignItems: 'center'}}>
+          {/* <View style={styles.share}> */}
+          <LinearGradient
+            style={styles.share}
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 0}}
+            colors={['#A1C4FD', '#FDA085']}>
+            <Text
+              style={{
+                fontSize: 22,
+                color: '#000',
+                fontWeight: '500',
+                paddingTop: 15,
+                paddingRight: 15,
+              }}>
+              Share with Friends
+            </Text>
+
+            <TouchableOpacity
+              style={{
+                width: 149,
+                height: 61,
+                borderRadius: 30,
+                backgroundColor: '#1B0808',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Text style={{fontSize: 20}}>Share</Text>
+            </TouchableOpacity>
+          </LinearGradient>
+        </View>
+
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Text
+            style={{
+              fontSize: 27,
+              color: '#fff',
+              marginTop: 38,
+              marginBottom: 10,
+            }}>
+            Recomended
+          </Text>
+          <TouchableOpacity>
+            <Text style={{fontSize: 18, color: '#4285F4', marginTop: 38}}>
+              View all
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View>
+          <SectionList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{paddingHorizontal: 10}}
+            stickySectionHeadersEnabled={false}
+            sections={COURSES}
+            renderItem={({item, section}) => {
+              return <Recomended item={item} />;
+            }}
+          />
+        </View>
+
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Text
+            style={{
+              fontSize: 27,
+              color: '#fff',
+              marginTop: 38,
+              marginBottom: 10,
+            }}>
+            Categories
+          </Text>
+          <TouchableOpacity>
+            <Text style={{fontSize: 18, color: '#4285F4', marginTop: 38}}>
+              View all
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <SectionList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{paddingHorizontal: 10}}
+          stickySectionHeadersEnabled={false}
+          sections={SECTIONS}
+          renderItem={({item, section}) => {
+            return <ListItem item={item} />;
+          }}
+        />
+      </View>
+    </ScrollView>
+  );
 }
 
-const SECTIONS = [
+const COURSES = [
   {
-    title: 'Daily Updates',
     data: [
       {
         key: '1',
-        text: 'AI is the new beginning',
+        text: 'Potrait Photography',
+        course: 'Mentor: Jojo Mojo',
+        time: '6hrs',
+        ratings: '4.5',
         uri: 'https://picsum.photos/id/1/200',
       },
       {
         key: '2',
-        text: 'HTML & CSS',
+        text: 'Coding',
+        course: '36 Course',
         uri: 'https://picsum.photos/id/10/200',
       },
 
       {
         key: '3',
         text: 'UI & UX',
+        course: '36 Course',
         uri: 'https://picsum.photos/id/1002/200',
       },
       {
         key: '4',
-        text: 'Item text 4',
+        text: 'Accounts',
+        course: '36 Course',
         uri: 'https://picsum.photos/id/1006/200',
       },
       {
         key: '5',
-        text: 'Item text 5',
+        text: 'Physics',
+        course: '36 Course',
         uri: 'https://picsum.photos/id/1008/200',
       },
     ],
@@ -100,6 +220,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#191414',
     color: 'white',
+    paddingHorizontal: 32,
   },
   share: {
     width: 376,
@@ -110,55 +231,80 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    // justifyContent: 'center',
-    // alignItems: 'center',
   },
-  // title: {
-  //   flexDirection: 'row',
-  //   margin: 20,
-  //   // borderColor: 'black',
-  //   // borderWidth: 1,
-  // },
-  // textinput: {
-  //   color: '#000',
-  //   backgroundColor: '#f5f5f5',
-  //   placeholder: 'Search',
-  //   borderColor: '#000',
-  //   borderRadius: 10,
-  //   width: '80%',
-  // },
-  // search: {
-  //   paddingHorizontal: 15,
-  //   justifyContent: 'space-between',
-  //   alignItems: 'center',
-  //   flexDirection: 'row',
-  // },
-  // dUpdates: {
-  //   margin: 14,
-  // },
+  itemRecomendedPhoto: {
+    borderRadius: 5,
+    width: 316,
+    height: 134,
+  },
 
-  // sectionHeader: {
-  //   fontWeight: '800',
-  //   fontSize: 22,
-  //   color: '#EEE',
-  //   marginTop: 20,
-  //   marginBottom: 5,
-  // },
-  // item: {
-  //   margin: 10,
-  // },
-  // itemPhoto: {
-  //   borderRadius: 5,
-  //   width: 200,
-  //   height: 200,
-  // },
-  // itemText: {
-  //   color: '#EEE',
-  //   marginTop: 5,
-  //   fontWeight: '500',
-  //   fontSize: 18,
-  // },
+  sectionHeader: {
+    fontWeight: '800',
+    fontSize: 22,
+    color: '#EEE',
+    marginTop: 20,
+    marginBottom: 5,
+  },
+  item: {
+    marginLeft: 10,
+  },
+  itemPhoto: {
+    borderRadius: 5,
+    width: 170,
+    height: 150,
+  },
+  itemText: {
+    color: '#EEE',
+    marginTop: 5,
+    fontWeight: '500',
+    fontSize: 18,
+  },
+  itemCourse: {
+    color: '#EEE',
+    marginTop: 5,
+    fontWeight: '500',
+    fontSize: 14,
+    opacity: 0.7,
+  },
 });
+
+const SECTIONS = [
+  {
+    data: [
+      {
+        key: '1',
+        text: 'Photography',
+        course: '36 Course',
+        uri: 'https://picsum.photos/id/1/200',
+      },
+      {
+        key: '2',
+        text: 'Coding',
+        course: '36 Course',
+        uri: 'https://picsum.photos/id/10/200',
+      },
+
+      {
+        key: '3',
+        text: 'UI & UX',
+        course: '36 Course',
+        uri: 'https://picsum.photos/id/1002/200',
+      },
+      {
+        key: '4',
+        text: 'Accounts',
+        course: '36 Course',
+        uri: 'https://picsum.photos/id/1006/200',
+      },
+      {
+        key: '5',
+        text: 'Physics',
+        course: '36 Course',
+        uri: 'https://picsum.photos/id/1008/200',
+      },
+    ],
+  },
+];
 
 // <View style={styles.title}>
 //           <Text style={{color: '#45abb1', fontWeight: 'bold', fontSize: 25}}>

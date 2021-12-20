@@ -1,13 +1,19 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import {TouchableNativeFeedback} from 'react-native-gesture-handler';
 
 function PremiumScreen({navigation}) {
   return (
     <View style={styles.container}>
-      <View style={{padding: 16}}>
-        <Icon size={32} name="long-arrow-left" color={'#fff'} />
+      <View style={{padding: 8}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Course_View')}>
+          <AntDesign
+            size={25}
+            name="left"
+            style={{paddingTop: 14, paddingLeft: 14}}
+          />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.start}>
@@ -96,7 +102,7 @@ const styles = StyleSheet.create({
   },
   blackbox: {
     backgroundColor: 'black',
-    width: 428,
+    width: '100%',
     height: 102,
     justifyContent: 'center',
     alignItems: 'center',

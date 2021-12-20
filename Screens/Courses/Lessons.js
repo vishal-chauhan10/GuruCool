@@ -5,23 +5,18 @@ import VideoLesson from './../../Components/VideoLesson';
 function Lessons(props) {
   return (
     <View style={styles.container}>
-      <VideoLesson
-        iconName={'unlock'}
-        videoTitle={'Promo Video'}
-        videoTime={'2 mins'}
-      />
-
-      <VideoLesson
-        iconName={'unlock'}
-        videoTitle={'Promo Video'}
-        videoTime={'2 mins'}
-      />
-
-      <VideoLesson
-        iconName={'lock'}
-        videoTitle={'Promo Video'}
-        videoTime={'2 mins'}
-      />
+      {props.route.params.lessons.map(function (lesson, index) {
+        return (
+          <VideoLesson
+            key={lesson.id}
+            videoTitle={lesson.title}
+            iconName={index == 0 ? 'unlock' : 'lock'}
+            videoTime={lesson.duration}
+            // video ={lessons.link}
+            // onPress={() => props.navigation.navigate('PremiumScreen')}
+          />
+        );
+      })}
     </View>
   );
 }

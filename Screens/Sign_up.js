@@ -108,7 +108,7 @@ function Sign_up({navigation}) {
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
         <TouchableOpacity
           style={styles.btn}
-          onPress={() => navigation.navigate(Home)}>
+          onPress={() => navigation.navigate('Tabs')}>
           <Text style={{fontSize: 25, color: '#fff'}}>Sign Up</Text>
         </TouchableOpacity>
       </View>

@@ -17,7 +17,9 @@ import Course_View_Navigator from '../../Navigators/Course_View_Navigator';
 
 const {width} = Dimensions.get('window');
 
-function Course_View(props) {
+function Course_View({navigation, route}) {
+  const data = route.params.data;
+  console.log('DATA IN COURSE_VIEW:', data);
   return (
     <View
       style={{
@@ -39,7 +41,7 @@ function Course_View(props) {
             }}>
             <Image
               source={{
-                uri: 'https://images.pexels.com/photos/598917/pexels-photo-598917.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                uri: data.image,
               }}
               style={{
                 width: width,
@@ -50,7 +52,7 @@ function Course_View(props) {
           </View>
           <View style={styles.subContainer}>
             <Text style={{fontSize: 24, fontWeight: '500', color: 'white'}}>
-              Portrait Photography : Beginner Course
+              {data.title}
             </Text>
 
             <View
@@ -59,12 +61,15 @@ function Course_View(props) {
                 alignItems: 'center',
                 marginTop: 8,
               }}>
-              <Text>1h 30 min</Text>
+              <Text>{data.duration}</Text>
               <Text style={{marginHorizontal: 16}}>•</Text>
-              <Text>2.3k students</Text>
+              <Text>{data.mentorName}</Text>
             </View>
             <View style={{flex: 1, backgroundColor: 'transparent'}}>
-              <Course_View_Navigator />
+              <Course_View_Navigator
+                lessons={data.lessons}
+                description={data.description}
+              />
             </View>
           </View>
         </View>
@@ -78,7 +83,8 @@ function Course_View(props) {
           left: 0,
           right: 0,
         }}>
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate('PremiumScreen')}>
           <View
             style={{
               width: 231,

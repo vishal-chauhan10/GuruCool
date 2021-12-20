@@ -25,7 +25,7 @@ export default function TabNavigator() {
 
     console.log('Route Name: ', routeName);
 
-    return routeName == 'Course_View' ? false : true;
+    return routeName == 'Course_View' || 'PremiumScreen' ? false : true;
   }
 
   return (

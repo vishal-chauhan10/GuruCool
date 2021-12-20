@@ -1,18 +1,19 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {View, StyleSheet} from 'react-native';
 import Description from '../../Components/Description';
 
 function CourseInfo(props) {
+  const video = useRef().current;
+  const data = props.route.params.description;
+
   return (
-    <View style={styles.container}>
+    <View style={styles.container} ref={video}>
       <Description
-        description={
-          'Description : This is a simple description that explain the description about the class or blabla bla and then blabla of course.'
-        }
-        students={1976}
-        language={'Marathi'}
-        update={'31, Dec 2021'}
-        subtitle={'English'}
+        description={data.course_desc}
+        students={data.students}
+        language={data.language}
+        update={data.lastUpdate}
+        subtitle={data.subtitles}
       />
     </View>
   );
@@ -20,7 +21,9 @@ function CourseInfo(props) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: '#191414',
+    marginTop: 25,
   },
 });
 

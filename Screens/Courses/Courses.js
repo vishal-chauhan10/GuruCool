@@ -14,8 +14,11 @@ import {ScrollView} from 'react-native-gesture-handler';
 import ListItem from './../../Components/ListItem';
 import FullName from './../../Components/FullName';
 import CourseTitle from '../../Components/CourseTitle';
+import PopularCategoryFL from '../../Components/PopularCategoryFL';
+import {useNavigation} from '@react-navigation/native';
 
 function Courses({navigation}) {
+  const propNavigation = useNavigation();
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -82,14 +85,14 @@ function Courses({navigation}) {
 
         <View style={{paddingTop: 37}}>
           <Text style={{fontSize: 30, color: '#FFF', fontWeight: '500'}}>
-            Popular Courses
+            Popular Categories
           </Text>
 
           <Text style={{fontSize: 15, paddingTop: 12, paddingBottom: 15}}>
             4 Results
           </Text>
         </View>
-        <View
+        {/* <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -124,13 +127,9 @@ function Courses({navigation}) {
             title="Media"
           />
 
-          <CourseTitle
-            source={{
-              uri: 'https://images.pexels.com/photos/1787220/pexels-photo-1787220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-            }}
-            title="Media"
-          />
-        </View>
+         
+        </View> */}
+        <PopularCategoryFL navigation={propNavigation} />
       </View>
     </ScrollView>
   );

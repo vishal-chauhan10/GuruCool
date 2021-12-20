@@ -8,15 +8,26 @@ import {NavigationContainer} from '@react-navigation/native';
 const Tab = createMaterialTopTabNavigator();
 
 function Course_View_Navigator(props) {
+  const lessons = props.lessons;
+  const description = props.description;
   return (
-    <Tab.Navigator tabBar={props => <MyTabBar {...props} />}>
-      <Tab.Screen name="Lessons" component={Lessons} />
-      <Tab.Screen name="Description" component={CourseInfo} />
+    <Tab.Navigator
+      tabBar={props => <MyTabBar numLessons={lessons.length} {...props} />}>
+      <Tab.Screen
+        name="Lessons"
+        component={Lessons}
+        initialParams={{lessons}}
+      />
+      <Tab.Screen
+        name="Description"
+        component={CourseInfo}
+        initialParams={{description}}
+      />
     </Tab.Navigator>
   );
 }
 
-function MyTabBar({state, descriptors, navigation, position}) {
+function MyTabBar({state, descriptors, navigation, numLessons}) {
   return (
     <View
       style={{
@@ -98,7 +109,7 @@ function MyTabBar({state, descriptors, navigation, position}) {
                     }}>
                     {label}
                   </Text>
-                  {label === 'Lessons' && (
+                  {label === 'Lessons' && numLessons > 0 && (
                     <View
                       style={{
                         justifyContent: 'center',
@@ -117,7 +128,7 @@ function MyTabBar({state, descriptors, navigation, position}) {
                           fontSize: 10,
                           textAlign: 'center',
                         }}>
-                        10
+                        {numLessons}
                       </Text>
                     </View>
                   )}
