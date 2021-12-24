@@ -5,7 +5,6 @@ import Courses_Lessons from './Courses_Lessons';
 
 export default function CategoryCoursesFL(props) {
   return (
-    // <View style={{flex: 1, flexWrap: 'wrap', marginTop: 36}}>
     <FlatList
       style={{width: '100%', flexWrap: 'wrap', marginTop: 36}}
       contentContainerStyle={{
@@ -14,14 +13,11 @@ export default function CategoryCoursesFL(props) {
         justifyContent: 'space-between',
       }}
       data={props.data}
-      //   numColumns={2}
-      //   horizontal={false}
       renderItem={({item}) => {
         return (
           <Courses_Lessons
             source={{uri: item.image}}
             title={item.title}
-            // title={item.title.subString(0, 6)}
             mentor={item.mentorName}
             onPress={() =>
               props.navigation.navigate('Course_View', {
@@ -35,7 +31,6 @@ export default function CategoryCoursesFL(props) {
         return item.id;
       }}
     />
-    // </View>
   );
 }
 

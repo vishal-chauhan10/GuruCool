@@ -11,53 +11,49 @@ import {
 } from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
-import ListItem from './../../Components/ListItem';
-import FullName from './../../Components/FullName';
-import CourseTitle from '../../Components/CourseTitle';
 import PopularCategoryFL from '../../Components/PopularCategoryFL';
 import {useNavigation} from '@react-navigation/native';
+import SearchBar from './../../Components/SearchBar';
+import {fontStyle} from '../../config/fontStyle';
 
 function Courses({navigation}) {
   const propNavigation = useNavigation();
   return (
-    <ScrollView>
+    <ScrollView style={{backgroundColor: '#191414'}}>
       <View style={styles.container}>
         <View style={styles.sale}>
           <View style={{flexDirection: 'column'}}>
-            <View style={{flexDirection: 'row'}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+              }}>
               <View style={styles.alphabets}>
                 <Text
-                  style={{
-                    fontSize: 44,
-                    color: '#fff',
-                    fontWeight: '900',
-                  }}>
+                  style={[
+                    fontStyle.whiteSemiBold28Poppins,
+                    {
+                      transform: [{rotate: '-10deg'}],
+                    },
+                  ]}>
                   S
                 </Text>
               </View>
               <View
-                style={({transform: [{rotate: '-20deg'}]}, styles.alphabets)}>
-                <Text style={{fontSize: 44, color: '#fff', fontWeight: '900'}}>
-                  A
-                </Text>
+                style={[styles.alphabets, {transform: [{rotate: '-7deg'}]}]}>
+                <Text style={fontStyle.whiteSemiBold28Poppins}>A</Text>
               </View>
-              <View style={styles.alphabets}>
-                <Text style={{fontSize: 44, color: '#fff', fontWeight: '900'}}>
-                  L
-                </Text>
+              <View style={[styles.alphabets, {transform: [{rotate: '3deg'}]}]}>
+                <Text style={fontStyle.whiteSemiBold28Poppins}>L</Text>
               </View>
-              <View style={styles.alphabets}>
-                <Text style={{fontSize: 44, color: '#fff', fontWeight: '900'}}>
-                  E
-                </Text>
+              <View style={[styles.alphabets, {transform: [{rotate: '7deg'}]}]}>
+                <Text style={fontStyle.whiteSemiBold28Poppins}>E</Text>
               </View>
             </View>
 
             <View
               style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-              <Text style={{color: '#000', fontWeight: '900', fontSize: 30}}>
-                30% off
-              </Text>
+              <Text style={fontStyle.blackBold28Poppins}>30% off</Text>
               <TouchableNativeFeedback>
                 <View
                   style={{
@@ -66,13 +62,12 @@ function Courses({navigation}) {
                     backgroundColor: '#000',
                     width: 141,
                     height: 41,
-
                     borderRadius: 30,
                   }}>
                   <Text
-                    style={{color: '#fff', fontWeight: '500', fontSize: 27}}>
-                    Details
-                  </Text>
+                    style={[
+                      fontStyle.whiteRegular22Poppins,
+                    ]}>{`Details >`}</Text>
                 </View>
               </TouchableNativeFeedback>
             </View>
@@ -80,55 +75,27 @@ function Courses({navigation}) {
         </View>
 
         <View style={{paddingTop: 13}}>
-          <FullName iconName="search" placeholder="Search" />
+          <SearchBar iconName="search" placeholder="Search" />
         </View>
 
         <View style={{paddingTop: 37}}>
-          <Text style={{fontSize: 30, color: '#FFF', fontWeight: '500'}}>
-            Popular Categories
-          </Text>
+          <Text style={fontStyle.whiteMedium30Poppins}>Categories</Text>
+          {/* <Text style={{fontSize: 30, fontWeight: '500'}}>Categories</Text> */}
 
-          <Text style={{fontSize: 15, paddingTop: 12, paddingBottom: 15}}>
-            4 Results
+          <Text
+            style={[
+              fontStyle.greyLight15Poppins,
+              {
+                fontSize: 15,
+                paddingTop: 2,
+                paddingBottom: 15,
+                marginLeft: 4,
+              },
+            ]}>
+            6 Results
           </Text>
         </View>
-        {/* <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            paddingHorizontal: 8,
-          }}>
-          <CourseTitle
-            source={{
-              uri: 'https://images.pexels.com/photos/1787220/pexels-photo-1787220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-            }}
-            title="Media"
-            onPress={() => navigation.navigate('Category_Courses')}
-          />
 
-          <CourseTitle
-            source={{
-              uri: 'https://images.pexels.com/photos/1787220/pexels-photo-1787220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-            }}
-            title="Media"
-          />
-
-          <CourseTitle
-            source={{
-              uri: 'https://images.pexels.com/photos/1787220/pexels-photo-1787220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-            }}
-            title="Media"
-          />
-          <CourseTitle
-            source={{
-              uri: 'https://images.pexels.com/photos/1787220/pexels-photo-1787220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-            }}
-            title="Media"
-          />
-
-         
-        </View> */}
         <PopularCategoryFL navigation={propNavigation} />
       </View>
     </ScrollView>
@@ -142,7 +109,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   sale: {
-    width: 373,
+    width: 379,
     height: 175,
     backgroundColor: '#30CFD0',
     borderRadius: 27,
@@ -158,7 +125,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 17,
     marginBottom: 25,
-    marginHorizontal: 12,
+    marginHorizontal: 6,
+    borderRadius: 5,
     // transform: [{rotate: '-20deg'}],
   },
 });

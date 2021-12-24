@@ -3,6 +3,7 @@ import {View, StyleSheet, Text} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {fontStyle} from '../config/fontStyle';
 
 function VideoLesson(props) {
   const defaultChildren = (
@@ -22,7 +23,7 @@ function VideoLesson(props) {
         />
 
         <View style={{flexDirection: 'column', marginLeft: 12}}>
-          <Text style={{fontSize: 19, fontWeight: '500', color: '#fff'}}>
+          <Text style={fontStyle.whiteRegular16Poppins} ellipsizeMode="tail">
             {props.videoTitle}
           </Text>
           <Text>{props.videoTime}</Text>
@@ -51,12 +52,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 16,
+    marginTop: 20,
     borderWidth: 1,
     borderColor: '#fff',
     borderRadius: 10,
     height: 62,
     paddingHorizontal: 8,
+    backgroundColor: '#191414',
   },
 });
 

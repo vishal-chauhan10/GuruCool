@@ -40,7 +40,7 @@ function FullName(props) {
       <Feather name={props.iconName} size={20} style={{padding: 5}} />
       <TextInput
         style={{
-          width: 289,
+          width: 264,
           height: 47,
           backgroundColor: '#191414',
         }}
@@ -48,10 +48,10 @@ function FullName(props) {
         onChangeText={val => textInputChange(val)}
       />
       {data.check_textInputChange ? (
-        <Animatable.View animation="bounceIn">
+        <Animatable.View style={{}} animation="bounceIn">
           <Feather
             name="check-circle"
-            style={{marginLeft: 5}}
+            style={{marginLeft: 0}}
             color="green"
             size={20}
           />

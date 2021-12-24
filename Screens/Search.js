@@ -3,54 +3,61 @@ import {
   View,
   StyleSheet,
   Text,
-  Image,
-  SafeAreaView,
-  FlatList,
-  SectionList,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
-import FullName from './../Components/FullName';
 import SearchTiles from './../Components/SearchTiles';
+import SearchBar from './../Components/SearchBar';
+import {fontStyle} from '../config/fontStyle';
 
 function Search(props) {
   return (
-    <View style={styles.container}>
-      <FullName iconName="search" placeholder="Search Courses" />
-      <Text
-        style={{
-          fontSize: 22,
-          fontWeight: 'bold',
-          color: '#fff',
-          marginTop: 60,
-        }}>
-        Popular
-      </Text>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <SearchBar iconName="search" placeholder="Search Courses" />
+        <Text style={[fontStyle.whiteMedium24Poppins, {marginTop: 60}]}>
+          Popular
+        </Text>
 
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          marginTop: 32,
-          paddingHorizontal: 8,
-        }}>
-        <SearchTiles
-          title="Accounts"
-          onPress={() => navigation.navigate('Category_Courses')}
-        />
-        <SearchTiles
-          title="Accounts"
-          onPress={() => navigation.navigate('Category_Courses')}
-        />
-        <SearchTiles
-          title="Accounts"
-          onPress={() => navigation.navigate('Category_Courses')}
-        />
-        <SearchTiles
-          title="Accounts"
-          onPress={() => navigation.navigate('Category_Courses')}
-        />
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            marginTop: 16,
+            paddingHorizontal: 8,
+          }}>
+          <SearchTiles
+            title="Photography"
+            source={{
+              uri: 'https://images.pexels.com/photos/7786928/pexels-photo-7786928.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+            }}
+            onPress={() => navigation.navigate('Category_Courses')}
+          />
+          <SearchTiles
+            title="Guitar"
+            source={{
+              uri: 'https://images.pexels.com/photos/1044989/pexels-photo-1044989.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+            }}
+            onPress={() => navigation.navigate('Category_Courses')}
+          />
+          <SearchTiles
+            title="Accounts"
+            source={{
+              uri: 'https://images.pexels.com/photos/5412/water-blue-ocean.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+            }}
+            onPress={() => navigation.navigate('Category_Courses')}
+          />
+          <SearchTiles
+            title="Accounts"
+            source={{
+              uri: 'https://images.pexels.com/photos/3374210/pexels-photo-3374210.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+            }}
+            onPress={() => navigation.navigate('Category_Courses')}
+          />
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 

@@ -4,6 +4,7 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 import Lessons from '../Screens/Courses/Lessons';
 import CourseInfo from '../Screens/Courses/CourseInfo';
 import {NavigationContainer} from '@react-navigation/native';
+import {fontStyle} from '../config/fontStyle';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -12,7 +13,9 @@ function Course_View_Navigator(props) {
   const description = props.description;
   return (
     <Tab.Navigator
-      tabBar={props => <MyTabBar numLessons={lessons.length} {...props} />}>
+      tabBar={props => <MyTabBar numLessons={lessons.length} {...props} />}
+      sceneContainerStyle={{backgroundColor: '#191414'}}
+      swipeEnabled={false}>
       <Tab.Screen
         name="Lessons"
         component={Lessons}
@@ -41,7 +44,8 @@ function MyTabBar({state, descriptors, navigation, numLessons}) {
           alignItems: 'center',
           width: 340,
           height: 58,
-          marginTop: 40,
+          marginTop: 24,
+          marginBottom: 16,
           borderRadius: 30,
           backgroundColor: 'grey',
         }}>
@@ -103,10 +107,11 @@ function MyTabBar({state, descriptors, navigation, numLessons}) {
                     alignItems: 'center',
                   }}>
                   <Text
-                    style={{
-                      color: isFocused ? '#fff' : '#000',
-                      fontWeight: isFocused ? '700' : '500',
-                    }}>
+                    style={
+                      isFocused
+                        ? fontStyle.whiteSemiBold16Poppins
+                        : fontStyle.blackRegular16Poppins
+                    }>
                     {label}
                   </Text>
                   {label === 'Lessons' && numLessons > 0 && (
@@ -123,11 +128,12 @@ function MyTabBar({state, descriptors, navigation, numLessons}) {
                         right: -20,
                       }}>
                       <Text
-                        style={{
-                          color: '#fff',
-                          fontSize: 10,
-                          textAlign: 'center',
-                        }}>
+                        style={[
+                          fontStyle.whiteRegular8Poppins,
+                          {
+                            textAlign: 'center',
+                          },
+                        ]}>
                         {numLessons}
                       </Text>
                     </View>

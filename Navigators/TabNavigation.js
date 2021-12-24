@@ -13,6 +13,7 @@ import ProfileNavigator from './ProfileNavigator';
 import Search from './../Screens/Search';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import CourseNavigator from './CourseNavigator';
+import HomeNavigator from './HomeNavigator';
 
 const Tab = createBottomTabNavigator();
 

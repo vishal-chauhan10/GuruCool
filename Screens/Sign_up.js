@@ -6,17 +6,15 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import Home from './Home';
 import Login from './Login';
-import * as Animatable from 'react-native-animatable';
 import Feather from 'react-native-vector-icons/Feather';
 import FullName from '../Components/FullName';
 import Password from '../Components/Password';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import IconGoogle from '../Svg_Components/IconGoogle';
 import IconApple from './../Svg_Components/IconApple';
 import IconFb from './../Svg_Components/IconFb';
 import LinearGradient from 'react-native-linear-gradient';
+import {fontStyle} from './../config/fontStyle';
 
 function Sign_up({navigation}) {
   const [data, setData] = React.useState({
@@ -71,12 +69,11 @@ function Sign_up({navigation}) {
       confirm_secureTextEntry: !data.confirm_secureTextEntry,
     });
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.heading}>
-        <Text style={{fontSize: 30, fontWeight: '700', color: '#fff'}}>
-          Register here
-        </Text>
+        <Text style={fontStyle.whiteBold30Montserrat}>Register here</Text>
       </View>
 
       <FullName iconName="user" placeholder="FullName" />
@@ -109,7 +106,7 @@ function Sign_up({navigation}) {
         <TouchableOpacity
           style={styles.btn}
           onPress={() => navigation.navigate('Tabs')}>
-          <Text style={{fontSize: 25, color: '#fff'}}>Sign Up</Text>
+          <Text style={fontStyle.blackMedium26Poppins}>Sign Up</Text>
         </TouchableOpacity>
       </View>
 
@@ -131,9 +128,7 @@ function Sign_up({navigation}) {
             backgroundColor: 'white',
           }}
         />
-        <Text style={{color: '#fff', fontWeight: '200', fontSize: 16}}>
-          Or continue with
-        </Text>
+        <Text style={fontStyle.whiteExtraLight16Poppins}>Or continue with</Text>
         <LinearGradient
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
@@ -167,16 +162,9 @@ function Sign_up({navigation}) {
       </View>
 
       <View style={styles.newAcc}>
-        <Text style={{fontWeight: '300'}}>Already Registered ?</Text>
+        <Text style={fontStyle.whiteLight15Poppins}>Already Registered ?</Text>
         <TouchableOpacity onPress={() => navigation.navigate(Login)}>
-          <Text
-            style={{
-              color: '#4285F4',
-              paddingLeft: 5,
-              textDecorationLine: 'underline',
-            }}>
-            Login
-          </Text>
+          <Text style={fontStyle.blueLight15Poppins}>Login</Text>
         </TouchableOpacity>
       </View>
     </View>

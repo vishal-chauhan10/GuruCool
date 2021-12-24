@@ -13,7 +13,9 @@ import {
 } from 'react-native-gesture-handler';
 import Description from '../../Components/Description';
 import VideoLesson from '../../Components/VideoLesson';
+import {fontStyle} from '../../config/fontStyle';
 import Course_View_Navigator from '../../Navigators/Course_View_Navigator';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const {width} = Dimensions.get('window');
 
@@ -51,21 +53,36 @@ function Course_View({navigation, route}) {
             />
           </View>
           <View style={styles.subContainer}>
-            <Text style={{fontSize: 24, fontWeight: '500', color: 'white'}}>
-              {data.title}
-            </Text>
+            <Text style={fontStyle.whiteMedium30Poppins}>{data.title}</Text>
 
             <View
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
-                marginTop: 8,
               }}>
-              <Text>{data.duration}</Text>
+              <Text style={fontStyle.greyLight14Poppins}>{data.duration}</Text>
               <Text style={{marginHorizontal: 16}}>•</Text>
-              <Text>{data.mentorName}</Text>
+              <Text style={fontStyle.greyLight14Poppins}>
+                {data.mentorName}
+              </Text>
+              <Text style={{marginHorizontal: 16}}>•</Text>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <AntDesign size={14} name="star" color={'#FF7A18'} />
+                <Text
+                  style={[
+                    fontStyle.greyLight14Poppins,
+                    {marginLeft: 6, alignSelf: 'baseline'},
+                  ]}>
+                  4.5
+                </Text>
+              </View>
             </View>
-            <View style={{flex: 1, backgroundColor: 'transparent'}}>
+            <View style={{flex: 1, backgroundColor: '#191414'}}>
               <Course_View_Navigator
                 lessons={data.lessons}
                 description={data.description}
@@ -90,13 +107,13 @@ function Course_View({navigation, route}) {
               width: 231,
               height: 46,
               backgroundColor: '#4285F4',
-              borderRadius: 10,
+              borderRadius: 23,
+              // borderTopLeftRadius: 30,
+              // borderTopRightRadius: 30,
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Text style={{fontSize: 20, fontWeight: 'bold', color: '#fff'}}>
-              ENROLL NOW
-            </Text>
+            <Text style={fontStyle.whiteMedium24Poppins}>ENROLL NOW</Text>
           </View>
         </TouchableWithoutFeedback>
       </View>

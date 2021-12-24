@@ -1,16 +1,6 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-import Home from './Home';
-import Sign_up from './Sign_up';
-import * as Animatable from 'react-native-animatable';
-import Feather from 'react-native-vector-icons/Feather';
 import FullName from '../Components/FullName';
 import Password from '../Components/Password';
 import LinearGradient from 'react-native-linear-gradient';
@@ -98,7 +88,7 @@ function Login({navigation}) {
 
       <View style={styles.newAcc}>
         <Text style={{fontWeight: '300'}}>Not a member ?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
           <Text
             style={{
               color: '#4285F4',

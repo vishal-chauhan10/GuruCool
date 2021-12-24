@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   qstn: {
     flexDirection: 'row',
     paddingTop: 62,
-    // paddingHorizontal: 19,
     justifyContent: 'space-around',
   },
 });

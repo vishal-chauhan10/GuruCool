@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {fontStyle} from '../config/fontStyle';
 
 function SearchTiles(props) {
   return (
@@ -8,14 +9,29 @@ function SearchTiles(props) {
     <TouchableOpacity style={{marginTop: 16}} onPress={props.onPress}>
       <View
         style={{
-          width: 154,
-          height: 82,
-          backgroundColor: 'grey',
-          borderRadius: 10,
           justifyContent: 'center',
           alignItems: 'center',
+          position: 'relative',
         }}>
-        <Text style={{fontSize: 22, fontWeight: '500', color: '#fff'}}>
+        <Image
+          style={{
+            width: 154,
+            height: 90,
+            borderRadius: 10,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          source={props.source}
+        />
+
+        <Text
+          style={[
+            fontStyle.whiteMedium20Poppins,
+            {
+              textAlign: 'center',
+              position: 'absolute',
+            },
+          ]}>
           {props.title}
         </Text>
       </View>

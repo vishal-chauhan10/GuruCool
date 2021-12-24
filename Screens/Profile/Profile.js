@@ -1,20 +1,18 @@
 import React from 'react';
-import {View, StyleSheet, Text, Image, ScrollView} from 'react-native';
 import {
-  TouchableNativeFeedback,
+  View,
+  StyleSheet,
   TouchableOpacity,
-} from 'react-native-gesture-handler';
+  Text,
+  Image,
+  ScrollView,
+} from 'react-native';
+
 import IconBulb from '../../Svg_Components/IconBulb';
-import Aboutus from './Aboutus';
-import FAQs from './FAQs';
-import Signup from '../Signup';
 import LinearGradient from 'react-native-linear-gradient';
-import Feather from 'react-native-vector-icons/Feather';
 import ProfileList from './../../Components/ProfileList';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import Download from './Download';
-import MyProfile from './MyProfile';
-// import Signup from './../Signup';
+import {fontStyle} from '../../config/fontStyle';
 
 function Profile({navigation}) {
   return (
@@ -27,25 +25,18 @@ function Profile({navigation}) {
             marginTop: 31,
             marginBottom: 30,
           }}>
-          <IconBulb width={30} height={30} />
-          <Text
-            style={{
-              fontSize: 25,
-              fontWeight: 'bold',
-              color: '#fff',
-              marginLeft: 8,
-            }}>
-            Become a Mentor
-          </Text>
+          <IconBulb style={{marginRight: 8}} width={30} height={30} />
+          <TouchableOpacity>
+            <Text style={fontStyle.whiteLight25Montserrat}>
+              Become a Mentor
+            </Text>
+          </TouchableOpacity>
         </View>
-
         <LinearGradient
           style={{
             borderTopLeftRadius: 30,
             borderTopRightRadius: 30,
-            width: 372,
-            // height: 218,
-            // paddingTop: 27,
+            width: 356,
             paddingTop: 68,
           }}
           start={{x: 0, y: 0}}
@@ -84,16 +75,11 @@ function Profile({navigation}) {
                 justifyContent: 'center',
                 marginTop: 12,
               }}>
-              <Text
-                style={{
-                  fontSize: 30,
-                  fontWeight: '700',
-                  color: 'white',
-                  marginRight: 12,
-                }}>
+              <Text style={fontStyle.whiteSemiBold30Poppins}>
                 Vishal Chauhan
               </Text>
               <TouchableOpacity
+                style={{marginLeft: 12}}
                 onPress={() => navigation.navigate('MyProfile')}>
                 <FontAwesome5 name="pen" size={20} color="#fff" />
               </TouchableOpacity>
@@ -101,15 +87,16 @@ function Profile({navigation}) {
           </View>
         </LinearGradient>
 
-        <View style={{marginTop: 0}}>
-          <Text style={{paddingTop: 29}}>Video Preferences</Text>
+        <View style={{marginTop: 24}}>
+          <Text style={fontStyle.whiteLight15Poppins}>Video Preferences</Text>
           <ProfileList
             titleText="Download Options"
             onPress={() => navigation.navigate('Download')}
           />
           <ProfileList titleText="Video playback Options" />
-
-          <Text style={{paddingTop: 29}}>Help and Support</Text>
+          <View style={{marginTop: 29}}>
+            <Text style={fontStyle.whiteLight15Poppins}>Help and Support</Text>
+          </View>
           <ProfileList
             titleText="About GuruCool"
             onPress={() => navigation.navigate('Aboutus')}
@@ -132,14 +119,7 @@ function Profile({navigation}) {
               // marginTop: 50,
             }}
             onPress={() => navigation.navigate('Signup')}>
-            <Text
-              style={{
-                color: '#F90A18',
-                fontSize: 25,
-                fontWeight: '700',
-              }}>
-              Sign Out
-            </Text>
+            <Text style={fontStyle.whiteBold20Montserrat}>Sign Out</Text>
           </TouchableOpacity>
         </View>
       </View>

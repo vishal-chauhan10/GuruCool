@@ -1,220 +1,242 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {
   View,
   StyleSheet,
   SectionList,
+  FlatList,
   Text,
   TouchableOpacity,
   Image,
   ScrollView,
 } from 'react-native';
+import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-// import {TextInput} from 'react-native-paper';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import {data, recomendedCourses} from '../data/courseDetails';
+import {fontStyle} from './../config/fontStyle';
 
-const ListItem = ({item}) => {
-  return (
-    <View style={styles.item}>
-      <Image
-        source={{
-          uri: item.uri,
-        }}
-        style={styles.itemPhoto}
-        resizeMode="cover"
-      />
-      <Text style={styles.itemText}>{item.text}</Text>
-      <Text style={styles.itemCourse}>{item.course}</Text>
-    </View>
-  );
-};
+const RecomendedItem = ({item, index, separator, navigation}) => (
+  <TouchableWithoutFeedback
+    onPress={() => {
+      const data = item;
 
-const Recomended = ({item}) => {
-  return (
-    <View style={styles.item}>
-      <Image
-        source={{
-          uri: item.uri,
-        }}
-        style={styles.itemRecomendedPhoto}
-        resizeMode="cover"
-      />
-      <Text style={styles.itemText}>{item.text}</Text>
-      <Text style={styles.itemCourse}>{item.course}</Text>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}>
-        <View
-          style={{flexDirection: 'row', marginHorizontal: 10, marginTop: 5}}>
-          <MaterialIcons
-            name="access-time"
-            size={20}
-            color={'#fff'}
-            // opacity={0.4}
-          />
-          <Text style={{fontSize: 18, color: '#fff'}}>{item.time}</Text>
+      navigation.navigate('CourseNavigator', {
+        // navigating into diff screen of parent navigator
+        screen: 'Course_View',
+        params: {data},
+      });
+    }}>
+    <View style={{marginLeft: index == 0 ? 0 : 10}}>
+      <Image style={styles.Recomendedimages} source={{uri: item.image}} />
+      <View style={{flexDirection: 'column', justifyContent: 'space-between'}}>
+        <View style={{marginBottom: 4, marginTop: 14}}>
+          <Text style={fontStyle.whiteRegular20Poppins}>{item.title}</Text>
         </View>
-
         <View
-          style={{flexDirection: 'row', marginHorizontal: 10, marginTop: 5}}>
-          <AntDesign
-            name="staro"
-            size={20}
-            color={'#fff'}
-            // opacity={0.4}
-          />
-          <Text style={{fontSize: 18, color: '#fff'}}>{item.ratings}</Text>
+          style={{
+            marginTop: 1,
+            marginRight: 4,
+            flexDirection: 'row',
+          }}>
+          <View
+            style={{
+              width: 24,
+              height: 24,
+              // backgroundColor: 'red',
+              borderRadius: 12,
+            }}>
+            <Image
+              source={require('../assets/Images/mentor.png')}
+              style={{width: 24, height: 24}}
+            />
+          </View>
+          <View style={{marginLeft: 8}}>
+            <Text style={fontStyle.whiteRegular14Poppins}>
+              {item.mentorName}
+            </Text>
+          </View>
         </View>
       </View>
     </View>
-  );
-};
+  </TouchableWithoutFeedback>
+);
+
+const Item = ({item, index, separator, navigation}) => (
+  <TouchableOpacity
+    onPress={() => {
+      const category = item.category_courses;
+
+      navigation.navigate('CourseNavigator', {
+        // navigating into diff screen of parent navigator
+        screen: 'Category_Courses',
+        params: {category},
+      });
+    }}>
+    <View style={{marginLeft: index == 0 ? 0 : 10, marginBottom: 28}}>
+      <Image style={styles.images} source={{uri: item.image}} />
+      <View style={{marginBottom: 4, marginLeft: 4, marginTop: 14}}>
+        <Text style={fontStyle.whiteRegular20Poppins}>{item.title}</Text>
+      </View>
+    </View>
+  </TouchableOpacity>
+);
 
 export default function Home(props) {
+  const navigation = useNavigation();
+  const renderItem = props => <Item navigation={navigation} {...props} />;
+  const renderRecomendedItem = props => (
+    <RecomendedItem navigation={navigation} {...props} />
+  );
   return (
     <ScrollView>
       <View style={styles.container}>
-        <View style={{paddingVertical: 36}}>
-          <Text style={{fontWeight: '200', fontSize: 25}}>Hello,</Text>
-          <Text style={{fontWeight: '500', fontSize: 25}}>
-            Vishal Chauhan 👋
-          </Text>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{paddingVertical: 36}}>
+            <Text style={fontStyle.whiteExtraLight25Montserrat}>Hello,</Text>
+            <Text style={fontStyle.whiteMedium25Montserrat}>
+              Vishal Chauhan 👋
+            </Text>
+          </View>
+          <TouchableOpacity>
+            <Ionicons
+              style={{marginTop: 40}}
+              name="notifications-outline"
+              size={30}
+              color={'#d9d9d9'}
+            />
+          </TouchableOpacity>
         </View>
         <View style={{alignItems: 'center'}}>
-          {/* <View style={styles.share}> */}
           <LinearGradient
             style={styles.share}
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}
             colors={['#A1C4FD', '#FDA085']}>
-            <Text
-              style={{
-                fontSize: 22,
-                color: '#000',
-                fontWeight: '500',
-                paddingTop: 15,
-                paddingRight: 15,
-              }}>
-              Share with Friends
-            </Text>
+            <View>
+              <Text style={fontStyle.blackRegular20Poppins}>Share</Text>
+              <Text style={fontStyle.blackRegular20Poppins}>with Friends</Text>
+            </View>
 
             <TouchableOpacity
               style={{
-                width: 149,
-                height: 61,
+                width: 120,
+                height: 41,
                 borderRadius: 30,
                 backgroundColor: '#1B0808',
                 justifyContent: 'center',
                 alignItems: 'center',
+                flexDirection: 'row',
               }}>
-              <Text style={{fontSize: 20}}>Share</Text>
+              <Entypo
+                style={{marginRight: 8}}
+                name="share"
+                size={25}
+                color={'#d9d9d9'}
+              />
+              <Text style={fontStyle.whiteRegular20Poppins}>Share</Text>
             </TouchableOpacity>
           </LinearGradient>
         </View>
+        <View
+          style={{
+            marginTop: 38,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: 14,
+          }}>
+          <Text style={fontStyle.whiteSemiBold25Poppins}>Recomended</Text>
 
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <Text
-            style={{
-              fontSize: 27,
-              color: '#fff',
-              marginTop: 38,
-              marginBottom: 10,
-            }}>
-            Recomended
-          </Text>
           <TouchableOpacity>
-            <Text style={{fontSize: 18, color: '#4285F4', marginTop: 38}}>
-              View all
+            <Text
+              style={[fontStyle.blueLight13Montserrat, {letterSpacing: 1.2}]}>
+              VIEW ALL
             </Text>
           </TouchableOpacity>
         </View>
-        <View>
-          <SectionList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{paddingHorizontal: 10}}
-            stickySectionHeadersEnabled={false}
-            sections={COURSES}
-            renderItem={({item, section}) => {
-              return <Recomended item={item} />;
-            }}
-          />
-        </View>
-
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <Text
-            style={{
-              fontSize: 27,
-              color: '#fff',
-              marginTop: 38,
-              marginBottom: 10,
-            }}>
-            Categories
-          </Text>
-          <TouchableOpacity>
-            <Text style={{fontSize: 18, color: '#4285F4', marginTop: 38}}>
-              View all
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-        <SectionList
+        <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{paddingHorizontal: 10}}
-          stickySectionHeadersEnabled={false}
-          sections={SECTIONS}
-          renderItem={({item, section}) => {
-            return <ListItem item={item} />;
-          }}
+          data={HomeRecomendedList}
+          renderItem={renderRecomendedItem}
+          keyExtractor={item => item.key}
+        />
+        <View
+          style={{
+            marginTop: 38,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: 14,
+          }}>
+          <Text style={fontStyle.whiteSemiBold25Poppins}>
+            Popular Categories
+          </Text>
+
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('CourseNavigator', {
+                // navigating into diff screen of parent navigator
+                screen: 'Courses',
+                params: {data},
+              });
+            }}>
+            <Text style={fontStyle.blueLight13Montserrat}>VIEW ALL</Text>
+          </TouchableOpacity>
+        </View>
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={HomeList}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
         />
       </View>
     </ScrollView>
   );
 }
 
-const COURSES = [
-  {
-    data: [
-      {
-        key: '1',
-        text: 'Potrait Photography',
-        course: 'Mentor: Jojo Mojo',
-        time: '6hrs',
-        ratings: '4.5',
-        uri: 'https://picsum.photos/id/1/200',
-      },
-      {
-        key: '2',
-        text: 'Coding',
-        course: '36 Course',
-        uri: 'https://picsum.photos/id/10/200',
-      },
+const HomeList = data;
 
-      {
-        key: '3',
-        text: 'UI & UX',
-        course: '36 Course',
-        uri: 'https://picsum.photos/id/1002/200',
-      },
-      {
-        key: '4',
-        text: 'Accounts',
-        course: '36 Course',
-        uri: 'https://picsum.photos/id/1006/200',
-      },
-      {
-        key: '5',
-        text: 'Physics',
-        course: '36 Course',
-        uri: 'https://picsum.photos/id/1008/200',
-      },
-    ],
-  },
-];
+// const HomeRecomendedList = [
+//   {
+//     key: '1',
+//     text: 'Potrait Photography',
+//     course: 'Jojo Mojo',
+//     time: '6hrs',
+//     ratings: '4.5',
+//     uri: 'https://images.pexels.com/photos/4424567/pexels-photo-4424567.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+//   },
+//   {
+//     key: '2',
+//     text: 'Introduction to Guitar',
+//     course: 'Jojo Mojo',
+//     uri: 'https://images.pexels.com/photos/1010518/pexels-photo-1010518.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+//   },
 
+//   {
+//     key: '3',
+//     text: 'Public Speaking',
+//     course: 'Jojo Mojo',
+//     uri: 'https://images.pexels.com/photos/713149/pexels-photo-713149.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+//   },
+//   {
+//     key: '4',
+//     text: 'Salads',
+//     course: 'Jojo Mojo',
+//     uri: 'https://images.pexels.com/photos/2284166/pexels-photo-2284166.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+//   },
+//   {
+//     key: '5',
+//     text: 'Anatomy',
+//     course: 'Jojo Mojo',
+//     uri: 'https://images.pexels.com/photos/3059750/pexels-photo-3059750.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+//   },
+// ];
+const HomeRecomendedList = recomendedCourses;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -223,177 +245,37 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
   },
   share: {
-    width: 376,
+    width: 346,
     height: 127,
-    paddingTop: 31,
-    // paddingLeft: 24,
     backgroundColor: '#A1C4FD',
     borderRadius: 10,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
-  itemRecomendedPhoto: {
-    borderRadius: 5,
-    width: 316,
-    height: 134,
-  },
-
-  sectionHeader: {
-    fontWeight: '800',
-    fontSize: 22,
-    color: '#EEE',
-    marginTop: 20,
-    marginBottom: 5,
-  },
-  item: {
-    marginLeft: 10,
-  },
-  itemPhoto: {
-    borderRadius: 5,
+  images: {
     width: 170,
     height: 150,
+    borderRadius: 10,
   },
-  itemText: {
-    color: '#EEE',
-    marginTop: 5,
-    fontWeight: '500',
+  Recomendedimages: {
+    width: 316,
+    height: 134,
+    borderColor: '#fff',
+    borderWidth: 0.3,
+    borderRadius: 10,
+  },
+  title: {
     fontSize: 18,
+    color: '#fff',
+    marginBottom: 4,
+    marginLeft: 4,
+    marginTop: 8,
   },
-  itemCourse: {
-    color: '#EEE',
-    marginTop: 5,
-    fontWeight: '500',
-    fontSize: 14,
-    opacity: 0.7,
+  MentorName: {
+    fontSize: 17,
+    color: '#d9d9d9',
+    marginLeft: 2,
+    fontWeight: '100',
   },
 });
-
-const SECTIONS = [
-  {
-    data: [
-      {
-        key: '1',
-        text: 'Photography',
-        course: '36 Course',
-        uri: 'https://picsum.photos/id/1/200',
-      },
-      {
-        key: '2',
-        text: 'Coding',
-        course: '36 Course',
-        uri: 'https://picsum.photos/id/10/200',
-      },
-
-      {
-        key: '3',
-        text: 'UI & UX',
-        course: '36 Course',
-        uri: 'https://picsum.photos/id/1002/200',
-      },
-      {
-        key: '4',
-        text: 'Accounts',
-        course: '36 Course',
-        uri: 'https://picsum.photos/id/1006/200',
-      },
-      {
-        key: '5',
-        text: 'Physics',
-        course: '36 Course',
-        uri: 'https://picsum.photos/id/1008/200',
-      },
-    ],
-  },
-];
-
-// <View style={styles.title}>
-//           <Text style={{color: '#45abb1', fontWeight: 'bold', fontSize: 25}}>
-//             GuruCool
-//           </Text>
-//         </View>
-
-//         <View style={styles.search}>
-//           <View>{/* <Search size={30} color={'black'} /> */}</View>
-//           <View style={styles.textinput}>
-//             <TextInput placeholder="Search" style={{color: '#000'}} />
-//           </View>
-//           <View>
-//             <FontAwesome5 name={'sliders-h'} light size={30} color={'black'} />
-//           </View>
-//         </View>
-//         <View style={styles.dUpdates}>
-//           <Text
-//             style={{
-//               color: '#000',
-//               fontWeight: '500',
-//               marginLeft: 15,
-//               fontSize: 25,
-//             }}>
-//             Daily Updates
-//           </Text>
-
-//           <SectionList
-//             contentContainerStyle={{paddingHorizontal: 2}}
-//             horizontal
-//             stickySectionHeadersEnabled={false}
-//             sections={SECTIONS}
-//             renderSectionHeader={({section}) => (
-//               <>
-//                 {/* <Text style={styles.sectionHeader}>{section.title}</Text> */}
-//                 <FlatList
-//                   horizontal
-//                   data={section.data}
-//                   // renderItem={({item}) => <ListItem item={item} />}
-//                   showsHorizontalScrollIndicator={false}
-//                 />
-//               </>
-//             )}
-//             renderItem={({item, section}) => {
-//               return <ListItem item={item} />;
-//             }}
-//           />
-//         </View>
-//         <View style={styles.category}>
-//           <Text
-//             style={{
-//               color: '#141414',
-//               fontWeight: 'bold',
-//               fontSize: 25,
-//               marginTop: 18,
-//               marginLeft: 15,
-//             }}>
-//             Category
-//           </Text>
-//           {/* <TouchableOpacity> */}
-//           <View
-//             style={{
-//               marginHorizontal: 15,
-//               flexDirection: 'row',
-//               flexWrap: 'wrap',
-//               justifyContent: 'space-between',
-//             }}>
-//             <Category text="Technology" />
-//             <Category text="Literature" />
-//             <Category text="Chemistry" />
-//             <Category text="Physics" />
-//             <Category text="Accounts" />
-//             <Category text="Biology" />
-//           </View>
-//           {/* </TouchableOpacity> */}
-//         </View>
-//         {/*
-//         <View style={styles.ebook}>
-//           <Text
-//             style={{
-//               color: '#141414',
-//               fontWeight: 'bold',
-//               fontSize: 25,
-//               marginTop: 18,
-//               marginLeft: 15,
-//             }}>
-
-//           </Text>
-//           <EBooks src={'https://reactjs.org/logo-og.png'} />
-//         </View> */}
-
-//         <Radio_Btn qstn="Are you new to coding?" />

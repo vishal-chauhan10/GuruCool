@@ -22,10 +22,11 @@ function FAQs({navigation}) {
           <Text style={{fontSize: 27, color: '#fff'}}>FAQs</Text>
           <Text></Text>
         </View>
+
         <Freqs
           question="How to get started with GuruCool?"
           answer="It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. "
+          readable content of a page when looking at its layout."
         />
 
         <Freqs
@@ -64,7 +65,6 @@ const styles = StyleSheet.create({
     paddingBottom: 25,
   },
   header: {
-    justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',

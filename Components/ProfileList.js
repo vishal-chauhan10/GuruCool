@@ -7,13 +7,12 @@ import {
 } from 'react-native';
 import {TouchableNativeFeedback} from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
+import {fontStyle} from './../config/fontStyle';
 
 function ProfileList(props) {
   return (
     <TouchableNativeFeedback style={styles.container} onPress={props.onPress}>
-      <Text style={{fontSize: 20, fontWeight: '400', color: 'white'}}>
-        {props.titleText}
-      </Text>
+      <Text style={fontStyle.whiteMedium20Poppins}>{props.titleText}</Text>
       <Feather
         name="chevron-right"
         style={{padding: 5}}
