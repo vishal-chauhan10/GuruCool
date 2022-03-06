@@ -15,8 +15,15 @@ import IconApple from './../Svg_Components/IconApple';
 import IconFb from './../Svg_Components/IconFb';
 import LinearGradient from 'react-native-linear-gradient';
 import {fontStyle} from './../config/fontStyle';
+import {createUser} from '../api/apiCalls';
 
 function Sign_up({navigation}) {
+  const [onChange, setOnChange] = React.useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+
   const [data, setData] = React.useState({
     username: '',
     password: '',
@@ -76,9 +83,27 @@ function Sign_up({navigation}) {
         <Text style={fontStyle.whiteBold30Montserrat}>Register here</Text>
       </View>
 
-      <FullName iconName="user" placeholder="FullName" />
-      <FullName iconName="mail" placeholder="Email" />
-      <Password iconName="lock" placeholder="Password" />
+      <FullName
+        iconName="user"
+        placeholder="FullName"
+        onChange={event => {
+          setOnChange({...onChange, name: event.nativeEvent.text});
+        }}
+      />
+      <FullName
+        iconName="mail"
+        placeholder="Email"
+        onChange={event => {
+          setOnChange({...onChange, email: event.nativeEvent.text});
+        }}
+      />
+      <Password
+        iconName="lock"
+        placeholder="Password"
+        onChange={event => {
+          setOnChange({...onChange, password: event.nativeEvent.text});
+        }}
+      />
 
       <View style={styles.fullName}>
         <Feather name="lock" size={20} />
@@ -105,7 +130,30 @@ function Sign_up({navigation}) {
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
         <TouchableOpacity
           style={styles.btn}
-          onPress={() => navigation.navigate('Tabs')}>
+          onPress={async () => {
+            console.log(onChange.name);
+            console.log(onChange.email);
+            console.log(onChange.password);
+
+            const data = await createUser(
+              onChange.name,
+              onChange.email,
+              onChange.password,
+            ).then(async res => {
+              console.log('Res', res);
+              try {
+                if (typeof res === 'object') {
+                  // await setItem('user', res);
+                  // await setItem('isSignedIn', 1);
+                  const userData = await getItem('user');
+                  console.log(userData);
+                  navigation.navigate('TabNavigation');
+                }
+              } catch (error) {
+                console.log('Error processing the data');
+              }
+            });
+          }}>
           <Text style={fontStyle.blackMedium26Poppins}>Sign Up</Text>
         </TouchableOpacity>
       </View>

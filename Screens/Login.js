@@ -1,5 +1,11 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ToastAndroid,
+} from 'react-native';
 
 import FullName from '../Components/FullName';
 import Password from '../Components/Password';
@@ -7,8 +13,17 @@ import LinearGradient from 'react-native-linear-gradient';
 import IconGoogle from '../Svg_Components/IconGoogle';
 import IconApple from './../Svg_Components/IconApple';
 import IconFb from './../Svg_Components/IconFb';
+import {data} from './../data/courseDetails';
+
+import {authenticate} from '../api/apiCalls';
+import {getItem, setItem} from '../data/storage';
 
 function Login({navigation}) {
+  const [onChange, setOnChange] = React.useState({
+    email: '',
+    password: '',
+  });
+
   return (
     <View style={styles.container}>
       <View style={styles.heading}>
@@ -17,9 +32,21 @@ function Login({navigation}) {
         </Text>
       </View>
 
-      <FullName iconName="mail" placeholder="Email" />
+      <FullName
+        iconName="mail"
+        placeholder="Email"
+        onChange={event => {
+          setOnChange({...onChange, email: event.nativeEvent.text});
+        }}
+      />
 
-      <Password iconName="lock" placeholder="Password" />
+      <Password
+        iconName="lock"
+        placeholder="Password"
+        onChange={event => {
+          setOnChange({...onChange, password: event.nativeEvent.text});
+        }}
+      />
 
       <TouchableOpacity style={{alignSelf: 'flex-end', paddingTop: 7}}>
         <Text>Recovery Password</Text>
@@ -28,7 +55,51 @@ function Login({navigation}) {
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
         <TouchableOpacity
           style={styles.btn}
-          onPress={() => navigation.navigate('Tabs')}>
+          onPress={async () => {
+            console.log(onChange.email);
+
+            const data = await authenticate(
+              onChange.email,
+              onChange.password,
+            ).then(async res => {
+              console.log('Res ', res);
+              try {
+                if (typeof res === 'object') {
+                  await setItem('user', res);
+                  await setItem('isSignedIn', 1);
+                  const userData = await getItem('user');
+                  console.log(userData);
+                  navigation.navigate('TabNavigation');
+                } else if (res === 'Invalid password') {
+                  ToastAndroid.show(
+                    'Invalid Email id or Password! Please try again',
+                    ToastAndroid.LONG,
+                  );
+                } else if (res === 'User does not exist') {
+                  ToastAndroid.show(
+                    'User Does Not Exist with given credentials',
+                    ToastAndroid.LONG,
+                  );
+                }
+              } catch (error) {
+                console.log('Error in processing the data');
+              }
+            });
+
+            // await fetch('http://192.168.0.107/students' + onChange.email, {
+            //   headers: {
+            //     'Content-Type': 'application/json',
+            //     Accept: 'application/json',
+            //   },
+            //   method: 'POST',
+            //   body: JSON.stringify({
+            //     email: onChange.email,
+            //     password: onChange.password,
+            //   }),
+            // }).catch(e => {
+            //   console.log(e);
+            // });
+          }}>
           <Text style={{fontSize: 25, color: '#fff'}}>Login</Text>
         </TouchableOpacity>
       </View>
@@ -88,7 +159,7 @@ function Login({navigation}) {
 
       <View style={styles.newAcc}>
         <Text style={{fontWeight: '300'}}>Not a member ?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Sign_up')}>
           <Text
             style={{
               color: '#4285F4',

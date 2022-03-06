@@ -20,6 +20,13 @@ export const fontStyle = {
     fontSize: 15,
     fontFamily: 'Poppins-Light',
   },
+
+  greyExtraLight37Poppins: {
+    color: '#9C9C9C',
+    fontSize: 37,
+    fontFamily: 'Poppins-ExtraLight',
+  },
+
   whiteLight18Poppins: {
     color: '#fff',
     fontSize: 18,
@@ -46,6 +53,13 @@ export const fontStyle = {
     fontSize: 10,
     fontFamily: 'Poppins-Regular',
   },
+
+  whiteRegular14Poppins: {
+    color: '#fff',
+    fontSize: 14,
+    fontFamily: 'Poppins-Regular',
+  },
+
   whiteRegular14Poppins: {
     color: '#fff',
     fontSize: 14,
@@ -119,6 +133,18 @@ export const fontStyle = {
     fontFamily: 'Poppins-SemiBold',
   },
 
+  whiteSemiBold35Poppins: {
+    color: '#fff',
+    fontSize: 35,
+    fontFamily: 'Poppins-SemiBold',
+  },
+
+  blueSemiBold35Poppins: {
+    color: '#4285F4',
+    fontSize: 35,
+    fontFamily: 'Poppins-SemiBold',
+  },
+
   blackBold28Poppins: {
     color: '#000',
     fontSize: 28,
@@ -130,12 +156,18 @@ export const fontStyle = {
     fontFamily: 'Poppins-SemiBold',
   },
 
-  ///////////////////////////////////////Monteserrat/////////////////////////////////////////////////
-  whiteRegular14Poppins: {
+  whiteRegular39Poppins: {
     color: '#fff',
-    fontSize: 14,
+    fontSize: 39,
     fontFamily: 'Poppins-Regular',
   },
+  whiteSemiBold50Poppins: {
+    color: '#fff',
+    fontSize: 50,
+    fontFamily: 'Poppins-SemiBold',
+  },
+
+  ///////////////////////////////////////Monteserrat/////////////////////////////////////////////////
   whiteExtraLight25Montserrat: {
     color: '#fff',
     fontSize: 25,
@@ -178,5 +210,18 @@ export const fontStyle = {
     color: '#Fff',
     fontSize: 30,
     fontFamily: 'Montserrat-Bold',
+  },
+
+  /////////////////////////////////////
+  whiteRegular25ReggaeOne: {
+    color: '#Fff',
+    fontSize: 25,
+    fontFamily: 'ReggaeOne-Regular',
+  },
+
+  blueRegular25ReggaeOne: {
+    color: '#4285F4',
+    fontSize: 25,
+    fontFamily: 'ReggaeOne-Regular',
   },
 };

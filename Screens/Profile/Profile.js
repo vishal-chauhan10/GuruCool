@@ -13,6 +13,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import ProfileList from './../../Components/ProfileList';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {fontStyle} from '../../config/fontStyle';
+import {setItem} from '../../data/storage';
+import RNExitApp from 'react-native-exit-app';
+import Sign_up from './../Sign_up';
 
 function Profile({navigation}) {
   return (
@@ -118,7 +121,12 @@ function Profile({navigation}) {
               justifyContent: 'center',
               // marginTop: 50,
             }}
-            onPress={() => navigation.navigate('Signup')}>
+            onPress={async () => {
+              await setItem('isSignedIn', 0);
+              // Exit App
+              // navigation.navigate('Sign_up');
+              RNExitApp.exitApp();
+            }}>
             <Text style={fontStyle.whiteBold20Montserrat}>Sign Out</Text>
           </TouchableOpacity>
         </View>

@@ -11,11 +11,10 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native-gesture-handler';
-import Description from '../../Components/Description';
-import VideoLesson from '../../Components/VideoLesson';
 import {fontStyle} from '../../config/fontStyle';
 import Course_View_Navigator from '../../Navigators/Course_View_Navigator';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Player from './../Player';
 
 const {width} = Dimensions.get('window');
 
@@ -36,7 +35,6 @@ function Course_View({navigation, route}) {
             style={{
               width: width,
               height: 380,
-              backgroundColor: 'red',
               borderBottomLeftRadius: 45,
               borderBottomRightRadius: 45,
               overflow: 'hidden',
@@ -51,6 +49,32 @@ function Course_View({navigation, route}) {
               }}
               resizeMode="cover"
             />
+
+            {/* back btn */}
+
+            <TouchableOpacity
+              style={{
+                width: 50,
+                height: 50,
+                backgroundColor: 'red',
+                borderRadius: 25,
+                position: 'relative',
+                top: 25,
+                left: 25,
+              }}
+              onPress={() => navigation.navigate('Category_Courses')}>
+              <AntDesign
+                size={25}
+                name="left"
+                style={{
+                  paddingTop: 30,
+                  marginBottom: 16,
+                  // position: 'absolute',
+                }}
+              />
+            </TouchableOpacity>
+
+            {/* back btn */}
           </View>
           <View style={styles.subContainer}>
             <Text style={fontStyle.whiteMedium30Poppins}>{data.title}</Text>
@@ -100,16 +124,13 @@ function Course_View({navigation, route}) {
           left: 0,
           right: 0,
         }}>
-        <TouchableWithoutFeedback
-          onPress={() => navigation.navigate('PremiumScreen')}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('Player')}>
           <View
             style={{
               width: 231,
               height: 46,
               backgroundColor: '#4285F4',
               borderRadius: 23,
-              // borderTopLeftRadius: 30,
-              // borderTopRightRadius: 30,
               justifyContent: 'center',
               alignItems: 'center',
             }}>

@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   StyleSheet,
@@ -16,6 +16,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {data, recomendedCourses} from '../data/courseDetails';
+import {getItem} from '../data/storage';
 import {fontStyle} from './../config/fontStyle';
 
 const RecomendedItem = ({item, index, separator, navigation}) => (
@@ -86,10 +87,22 @@ const Item = ({item, index, separator, navigation}) => (
 
 export default function Home(props) {
   const navigation = useNavigation();
+  const [state, setState] = useState(null);
   const renderItem = props => <Item navigation={navigation} {...props} />;
   const renderRecomendedItem = props => (
     <RecomendedItem navigation={navigation} {...props} />
   );
+  useEffect(() => {
+    async function UpdateName() {
+      const userData = await getItem('user');
+      setState({
+        user: userData,
+      });
+    }
+
+    UpdateName();
+  }, []);
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -97,7 +110,7 @@ export default function Home(props) {
           <View style={{paddingVertical: 36}}>
             <Text style={fontStyle.whiteExtraLight25Montserrat}>Hello,</Text>
             <Text style={fontStyle.whiteMedium25Montserrat}>
-              Vishal Chauhan 👋
+              {state?.user.name} 👋
             </Text>
           </View>
           <TouchableOpacity>

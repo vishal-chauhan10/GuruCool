@@ -49,6 +49,7 @@ function Password(props) {
           height: 50,
           backgroundColor: '#191414',
         }}
+        onChange={props.onChange}
         placeholder={props.placeholder}
         secureTextEntry={data.secureTextEntry ? true : false}
       />

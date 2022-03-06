@@ -44,6 +44,7 @@ function FullName(props) {
           height: 47,
           backgroundColor: '#191414',
         }}
+        onChange={props.onChange}
         placeholder={props.placeholder}
         onChangeText={val => textInputChange(val)}
       />
