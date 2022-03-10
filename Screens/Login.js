@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ToastAndroid,
 } from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
 
 import FullName from '../Components/FullName';
 import Password from '../Components/Password';
@@ -17,12 +18,17 @@ import {data} from './../data/courseDetails';
 
 import {authenticate} from '../api/apiCalls';
 import {getItem, setItem} from '../data/storage';
+import { login } from '../redux/reducers/auth';
 
 function Login({navigation}) {
   const [onChange, setOnChange] = React.useState({
     email: '',
     password: '',
   });
+
+  const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+  const dispatch = useDispatch();
+  console.log("Is Signed In from Login.js: ", isSignedIn);
 
   return (
     <View style={styles.container}>
@@ -69,6 +75,7 @@ function Login({navigation}) {
                   await setItem('isSignedIn', 1);
                   const userData = await getItem('user');
                   console.log(userData);
+                  dispatch(login());
                   navigation.navigate('TabNavigation');
                 } else if (res === 'Invalid password') {
                   ToastAndroid.show(
