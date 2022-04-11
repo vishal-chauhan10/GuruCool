@@ -16,6 +16,8 @@ import IconFb from './../Svg_Components/IconFb';
 import LinearGradient from 'react-native-linear-gradient';
 import {fontStyle} from './../config/fontStyle';
 import {createUser} from '../api/apiCalls';
+import {useDispatch, useSelector} from 'react-redux';
+import {login} from '../redux/reducers/auth';
 
 function Sign_up({navigation}) {
   const [onChange, setOnChange] = React.useState({
@@ -76,6 +78,10 @@ function Sign_up({navigation}) {
       confirm_secureTextEntry: !data.confirm_secureTextEntry,
     });
   };
+
+  const isSignedIn = useSelector(state => state.auth.isSignedIn);
+  const dispatch = useDispatch();
+  console.log('Is Signed In from Sign_up.js: ', isSignedIn);
 
   return (
     <View style={styles.container}>
@@ -143,11 +149,16 @@ function Sign_up({navigation}) {
               console.log('Res', res);
               try {
                 if (typeof res === 'object') {
-                  // await setItem('user', res);
+                  await setItem('user', {
+                    name: res.name,
+                    email: res.email,
+                    id: res._id,
+                  });
                   // await setItem('isSignedIn', 1);
-                  const userData = await getItem('user');
-                  console.log(userData);
-                  navigation.navigate('TabNavigation');
+                  // const userData = await getItem('user');
+                  // console.log(userData);
+                  // dispatch(login());
+                  navigation.navigate('Login');
                 }
               } catch (error) {
                 console.log('Error processing the data');

@@ -16,8 +16,12 @@ import {fontStyle} from '../../config/fontStyle';
 import {setItem} from '../../data/storage';
 import RNExitApp from 'react-native-exit-app';
 import Sign_up from './../Sign_up';
+import {useDispatch, useSelector} from 'react-redux';
+import {logout} from '../../redux/reducers/auth';
 
 function Profile({navigation}) {
+  const dispatch = useDispatch();
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -125,7 +129,8 @@ function Profile({navigation}) {
               await setItem('isSignedIn', 0);
               // Exit App
               // navigation.navigate('Sign_up');
-              RNExitApp.exitApp();
+              // RNExitApp.exitApp();
+              dispatch(logout());
             }}>
             <Text style={fontStyle.whiteBold20Montserrat}>Sign Out</Text>
           </TouchableOpacity>
