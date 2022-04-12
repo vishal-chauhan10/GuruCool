@@ -14,7 +14,7 @@ import {
 import {fontStyle} from '../../config/fontStyle';
 import Course_View_Navigator from '../../Navigators/Course_View_Navigator';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Player from './../Player';
+import VideoPlayer from 'react-native-video-player';
 
 const {width} = Dimensions.get('window');
 
@@ -48,6 +48,19 @@ function Course_View({navigation, route}) {
                 height: 380,
               }}
               resizeMode="cover"
+            />
+
+            <VideoPlayer
+              // style={{transform: [{rotate: '90deg'}]}}
+              video={{
+                uri: data.link,
+              }}
+              videoWidth={1600}
+              videoHeight={900}
+              showDuration={true}
+              resizeMode="contain"
+              // fullScreenOnLongPress={true}
+              // thumbnail={{uri: 'https://i.picsum.photos/id/866/1600/900.jpg'}}
             />
 
             {/* back btn */}
@@ -124,7 +137,8 @@ function Course_View({navigation, route}) {
           left: 0,
           right: 0,
         }}>
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('Player')}>
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate('PremiumScreen')}>
           <View
             style={{
               width: 231,

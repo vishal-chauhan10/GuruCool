@@ -1,8 +1,6 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import Video from 'react-native-video';
+import {View, StyleSheet} from 'react-native';
 import VideoPlayer from 'react-native-video-player';
-import video from '../assets/video.mp4';
 
 function Player(props) {
   return (
@@ -16,14 +14,14 @@ function Player(props) {
       <VideoPlayer
         // style={{transform: [{rotate: '90deg'}]}}
         video={{
-          uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+          uri: props.data.link,
         }}
         videoWidth={1600}
         videoHeight={900}
         showDuration={true}
         resizeMode="contain"
         // fullScreenOnLongPress={true}
-        thumbnail={{uri: 'https://i.picsum.photos/id/866/1600/900.jpg'}}
+        // thumbnail={{uri: 'https://i.picsum.photos/id/866/1600/900.jpg'}}
       />
     </View>
   );

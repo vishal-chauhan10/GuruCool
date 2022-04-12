@@ -3,7 +3,6 @@ import React, {useState, useEffect} from 'react';
 import {
   View,
   StyleSheet,
-  SectionList,
   FlatList,
   Text,
   TouchableOpacity,
@@ -12,7 +11,6 @@ import {
 } from 'react-native';
 import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {data, recomendedCourses} from '../data/courseDetails';
@@ -110,7 +108,8 @@ export default function Home(props) {
           <View style={{paddingVertical: 36}}>
             <Text style={fontStyle.whiteExtraLight25Montserrat}>Hello,</Text>
             <Text style={fontStyle.whiteMedium25Montserrat}>
-              {state?.user.name} 👋
+              {/* {state?.user.name} */}
+              Vishal Chauhan👋
             </Text>
           </View>
           <TouchableOpacity>

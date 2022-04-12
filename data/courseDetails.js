@@ -19,7 +19,7 @@ export const data = [
             id: 'less1',
             title: 'Promo Video',
             duration: '2mins',
-            // link : ""
+            link: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
           },
           {
             id: 'less2',
@@ -39,6 +39,12 @@ export const data = [
             duration: '2mins',
             // link : ""
           },
+          {
+            id: 'less5',
+            title: 'Chapter 2',
+            duration: '10mins',
+            // link : ""
+          },
         ],
         description: {
           course_desc:
@@ -51,7 +57,7 @@ export const data = [
       },
       {
         id: '1.01b',
-        mentorName: 'Jojo Dojo',
+        mentorName: 'Harry Ole',
         title: 'Street Photgraphy: Beginner Course',
         image:
           'https://images.pexels.com/photos/3584283/pexels-photo-3584283.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
@@ -77,7 +83,7 @@ export const data = [
       {
         id: '1.01c',
         title: 'Mobile Photography',
-        mentorName: 'Kojo Dojo',
+        mentorName: 'Rajat Sharma',
         image:
           'https://images.pexels.com/photos/3520429/pexels-photo-3520429.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         duration: '1h 30min',
@@ -121,7 +127,7 @@ export const data = [
       {
         id: '1.01d',
         title: 'Nature Photography',
-        mentorName: 'Kojo Dojo',
+        mentorName: 'Dev Bhatt',
         image:
           'https://images.pexels.com/photos/7918258/pexels-photo-7918258.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         duration: '1h 30min',
@@ -317,9 +323,9 @@ export const data = [
   },
   {
     id: '3',
-    title: 'Photgraphy',
+    title: 'Music',
     image:
-      'https://images.pexels.com/photos/1787220/pexels-photo-1787220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      'https://images.pexels.com/photos/1389429/pexels-photo-1389429.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 
     category_courses: [
       {
@@ -523,6 +529,63 @@ export const data = [
       },
     ],
   },
+  {
+    id: '4.1',
+    title: 'Coding',
+    image:
+      'https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1600',
+
+    category_courses: [
+      {
+        id: '1.01',
+        title: 'Potrait Photography',
+        mentorName: 'Jojo Dojo',
+        image:
+          'https://images.pexels.com/photos/598917/pexels-photo-598917.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+        duration: '1h 30min',
+        students: '2.3k',
+        lessons: [
+          {
+            id: 'less1',
+            title: 'Promo Video',
+            duration: '2mins',
+            // link : ""
+          },
+        ],
+        description: {
+          course_desc: 'jhjdcwjh jwecjnkjce kjwecnbjbcw',
+          students: '2,300',
+          language: 'English',
+          lastUpdate: 'Nov 10, 2021',
+          subtitles: 'English',
+        },
+      },
+      {
+        id: '1.01b',
+        title: 'Street Photgraphy: Beginner Course',
+        image:
+          'https://images.pexels.com/photos/598917/pexels-photo-598917.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+        duration: '2h ',
+        students: '1.3k',
+        lessons: [
+          {
+            id: 'less1',
+            title: 'Promo Video',
+            duration: '2mins',
+            // link : ""
+          },
+        ],
+        description: {
+          course_desc: 'jhjdcwjh jwecjnkjce kjwecnbjbcw',
+          students: '2,300',
+          language: 'English',
+          lastUpdate: 'Nov 10, 2021',
+          subtitles: 'English',
+        },
+      },
+    ],
+  },
+
   {
     id: '5',
     title: 'CyberSecurity',

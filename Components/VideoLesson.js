@@ -13,7 +13,11 @@ function VideoLesson(props) {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'space-between',
-        }}>
+        }}
+        // onPress={() =>
+        //   props.navigation.navigate('Player', {data: {link: props.video}})
+        // }
+      >
         <Ionicons
           size={34}
           name={'md-play'}
@@ -41,7 +45,11 @@ function VideoLesson(props) {
   return props.iconName === 'lock' ? (
     <View>{defaultChildren}</View>
   ) : (
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableOpacity
+      onPress={() => {
+        props.onPress && props.onPress();
+        props.navigation.navigate('Player', {data: {link: props.video}});
+      }}>
       {defaultChildren}
     </TouchableOpacity>
   );
